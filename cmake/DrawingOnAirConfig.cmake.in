@@ -1,0 +1,7 @@
+# To use the DrawingOnAir library in your cmake project, add the following to your CMakeLists.txt:
+#    find_package(DrawingOnAir REQUIRED)
+#    ... then, after add_executable(${PROJECT_NAME}) or add_library(${PROJECT_NAME})
+#    target_link_libraries(${PROJECT_NAME} PUBLIC DrawingOnAir)
+
+
+include("${CMAKE_CURRENT_LIST_DIR}/DrawingOnAirTargets.cmake")

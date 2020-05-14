@@ -1,0 +1,121 @@
+#!/bin/bash
+
+# Usage: run display-type
+# where "display-type" is one of {desktop, fishtank, cave}
+
+# To modify the script for your own program:
+# 1. Edit the progBaseName line below to specify the base name of your
+#    exectuable, this is before a -d, -gcc3, etc.. is appended to the name.
+#    The base name should correspond to the PROJECT_NAME in your Makefile.
+# 2. Edit the sections at the bottom of the file that specify different
+#    program argument for different invocations of the program.  For example,
+#    you may want to load certain config files only when you're running the
+#    program in the Cave.  
+
+progBaseName=obj/tracingtask
+progConfigDir=../../kdata/config
+workingDir=.
+
+# Check for a version of the program starting with progBaseName.
+# If more than one version exists prompt the user for the version to run.
+potentialPrograms=(`echo $progBaseName*`)
+if [ ${#potentialPrograms[@]} -gt 1 ]
+then
+  i=1
+  for prog in ${potentialPrograms[@]}
+  do
+    echo "$i: $prog"
+    let i=i+1
+  done
+  num=0
+  while [ $num -le 0  -o  $num -gt ${#potentialPrograms[@]} ]
+  do
+    echo -n "Which version of the program would you like to run? "
+    read -n1 num
+    echo
+  done
+  let num=num-1
+  progToExecute=${potentialPrograms[$num]}
+else
+  progToExecute=${potentialPrograms[0]}
+fi
+
+
+# Make sure the the program exists and is executable
+if [ ! -e "$progToExecute" ]
+then
+  echo "Error: Could not find program to execute, using base name: $progBaseName"
+  exit 1
+elif [ ! -x "$progToExecute" ] 
+then
+  echo "Error: $progToExecute is not executable."
+  exit 1
+fi
+
+#echo $progToExecute
+
+curDir=`pwd`
+
+# Run it with differently depending on the first argument to the script
+if [ "$1" == "desktop" ]
+then
+  shift
+  cd $workingDir
+  $progToExecute desktop \
+  -f $progConfigDir/cavepainting-common.cfg \
+  -f $progConfigDir/cavepainting-desktop.cfg \
+  -f $progConfigDir/drawingstudy-common.cfg \
+  $@
+elif [ "$1" == "debug" ]
+then
+  shift
+  cd $workingDir
+  gdb --args $progToExecute desktop \
+  -f $progConfigDir/cavepainting-common.cfg \
+  -f $progConfigDir/cavepainting-desktop.cfg \
+  -f $progConfigDir/drawingstudy-common.cfg \
+  $@
+elif [ "$1" == "fishtank" ]
+then
+  shift
+  cd $workingDir
+  $progToExecute fishtank \
+  -f $progConfigDir/cavepainting-common.cfg \
+  -f $progConfigDir/cavepainting-fishtankphantom.cfg \
+  -f $progConfigDir/drawingstudy-common.cfg \
+  $@
+elif [ "$1" == "fishdebug" ]
+then
+  shift
+  cd $workingDir
+  gdb --args $progToExecute fishtank \
+  -f $progConfigDir/cavepainting-common.cfg \
+  -f $progConfigDir/cavepainting-fishtankphantom.cfg \
+  -f $progConfigDir/drawingstudy-common.cfg \
+  $@
+elif [ "$1" == "fishtank411" ]
+then
+  shift
+  cd $workingDir
+  $progToExecute desktop  \
+  -f $progConfigDir/cavepainting-common.cfg \
+  -f $progConfigDir/cavepainting-spinnaker.cfg \
+  -f $progConfigDir/drawingstudy-common.cfg \
+  $@
+elif [ "$1" == "cave" ]
+then
+  shift
+  cd $workingDir
+  $G/bin/vrg3d-runcave-winserv-dc $progToExecute \
+  -f $progConfigDir/cavepainting-common.cfg \
+  -f $progConfigDir/cavepainting-cave.cfg \
+  -f $progConfigDir/drawingstudy-common.cfg \
+  $@
+else
+  echo "Incorrect usage, no display argument specified."
+  exit 1
+fi
+
+
+cd $curDir
+

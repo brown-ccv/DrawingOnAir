@@ -1,0 +1,45 @@
+// FreeFormDraw PointLine Shader
+
+// Bind the Point Sprite texture to Texture 0
+// Bind the Color Swath Table texture to Texture 1
+//
+//   line
+//  weight  hue --->
+//  0 |
+//    |    Color Swatch Table Texture
+//  1 V
+
+
+// Pass per vertex data values in gl_MultiTexCoord1:
+//  gl_MultiTexCoord1.x  =  Column index into the Color Swath Table
+//  gl_MultiTexCoord1.y  =  Line weight in range [0->1] (Row index in Color Swath Table)
+//  gl_MultiTexCoord1.z  =  Size of the point in RoomSpace coordinates
+
+
+uniform float avgScreenResolution;
+uniform float scale;
+
+void main(void) {
+
+  // POINT POSITION:
+  // Return the point position normally as in the fixed function pipeline
+  gl_Position = ftransform();
+
+
+  // POINT SIZE:
+  // Calculate the correct gl_PointSize in pixels for a point that is
+  // gl_MultiTexCoord1.z units in size and located at the position of the
+  // gl_Vertex.  This code adjusts size based on both line weight and
+  // and perspective projection.
+  float4 p = gl_ModelViewProjectionMatrix * gl_Vertex;
+  float2 p12d = p.xy / p.w;
+  float2 p22d = (p.xy + float2(gl_MultiTexCoord1.z, 0)) / p.w;
+  float l = length(p22d - p12d);
+  gl_PointSize = scale * avgScreenResolution * l;
+  
+  // POINT COLOR:
+  gl_FrontColor = gl_Color;
+  gl_TexCoord[1] = gl_MultiTexCoord1;
+  gl_TexCoord[2] = gl_MultiTexCoord2;
+}
+

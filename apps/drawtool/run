@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# Usage: run [debug] [display-type] [demo-name]
+
+export G="F:/DrawingOnAir-master"
+programName="drawtool"
+configDir="$G/src/drawonair/share/config"
+
+
+arch=`$G/bin/garch`
+if [ "$arch" == "WIN32" ]
+then
+  programName="$programName.exe"
+fi
+
+progToExecute=`$G/bin/gfindexe $programName`
+
+# Run in gdb if "debug" is the first argument
+if [ "$1" == "debug" ]
+then
+  shift
+  progToExecute="gdb --args $progToExecute"
+fi
+
+
+# Check to see if the next argument is one of these display options
+display="desktop"
+if [ "$1" == "desktop" ]
+then
+  display="desktop"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-desktop.cfg"
+  shift
+elif [ "$1" == "desktopfullscreen" ]
+then
+  display="desktopfullscreen"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-desktop.cfg"
+  shift
+elif [ "$1" == "desktop640x480" ]
+then
+  display="desktop640x480"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-desktop.cfg"
+  shift
+elif [ "$1" == "samsung-grexec" ]
+then
+  display="samsung"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-samsungphantom.cfg"
+
+  # Use grexec to start up the force server app on lespaul This
+  # requires that grexecd.exe, compiled from $G/src/grexec is running
+  # in the background on lespaul..  Put it in your startup folder.
+  $G/src/grexec/build/WIN32-i686-vc9/Release/grexec.exe lespaul.cs.umn.edu sw/user-checkouts/keefe/src/drawonair/forceserver/build/WIN32-i686-vc9/Debug/forceserver.exe -f c:/vis/sw/user-checkouts/keefe/src/drawonair/share/config/forceserver-umn.cfg
+
+  # Wait 3 seconds to give the server time to start up
+  sleep 3
+
+  shift
+elif [ "$1" == "samsung" ]
+then
+  display="samsung"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-samsungphantom.cfg"
+  shift
+elif [ "$1" == "samsung-localhost" ]
+then
+  display="samsung"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-samsungphantom.cfg -c ForceNetHost=localhost"
+  shift
+elif [ "$1" == "samsung-disponly" ]
+then
+  display="samsung"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-samsungdisponly.cfg"
+  shift
+elif [ "$1" == "fishtank" ]
+then
+  display="fishtank304nodevices"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-fishtankphantom.cfg"
+  shift
+elif [ "$1" == "dragstudy" ]
+then
+  display="fishtank304nodevices"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-fishtankphantom.cfg -c ConstantPressure=0.15"
+  shift
+elif [ "$1" == "study" ]
+then
+  display="fishtank304nodevices"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-fishtankphantom.cfg -c InitialBrushSize=0.01"
+  shift
+elif [ "$1" == "fishtankmono" ]
+then
+  display="fishtank304nodevicesmono"
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-fishtankphantom.cfg"
+  shift
+elif [ "$1" == "cave" ]
+then
+  progToExecute="$G/bin/vrg3d-runcave -x $progToExecute"
+  display=""
+  dispOpts="-f $configDir/cavepainting-common.cfg -f $configDir/cavepainting-cave.cfg"
+  shift
+fi
+
+
+# Check to see if the next argument is the name of a demo we have setup here
+if [ "$1" == "batdemo" ]
+then
+  options="-f $configDir/cavepainting-batdata.cfg -c LoadArtwork=$G/src/drawonair/share/demo-artwork/HarrisonBat1Frame-samsung.3DArt -c UseFishtankDepthCues=0"
+  shift
+fi
+  
+if [ "$1" == "loadbat" ]
+then
+  options="-f $configDir/cavepainting-batdata.cfg -c LoadArtwork=$G/src/drawonair/share/demo-artwork/HarrisonBat1Frame.3DArt"
+  shift
+fi
+
+if [ "$1" == "heartdemo" ]
+then
+  options="-f $configDir/cavepainting-heartdata.cfg"
+  shift
+fi
+
+
+$progToExecute $display $dispOpts $options $@
+

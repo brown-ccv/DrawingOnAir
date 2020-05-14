@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Usage: run [debug] [display-type] [demo-name]
+
+
+programName="forceserver"
+configDir="$G/src/drawonair/share/config"
+
+
+arch=`$G/bin/garch`
+if [ "$arch" == "WIN32" ]
+then
+  programName="$programName.exe"
+fi
+
+progToExecute=`$G/bin/gfindexe $programName`
+
+# Run in gdb if "debug" is the first argument
+if [ "$1" == "debug" ]
+then
+  shift
+  progToExecute="gdb --args $progToExecute"
+fi
+
+
+# Check to see if the next argument is one of these display options
+display="forceserver"
+options="-f $configDir/forceserver-umn.cfg"
+
+$progToExecute $display $options $@
+

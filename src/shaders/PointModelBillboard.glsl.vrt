@@ -1,0 +1,19 @@
+
+uniform vec3 right;
+uniform vec3 up;
+
+void main(void) {
+
+  float4 r = float4(right.x, right.y, right.z, 0.0);
+  float4 u = float4(up.x, up.y, up.z, 0.0);
+
+  // VERTEX POSITION:
+  float4 p = gl_Vertex + r*gl_MultiTexCoord2.x + u*gl_MultiTexCoord2.y;
+  gl_Position = gl_ModelViewProjectionMatrix * p;
+  
+  // VERTEX COLOR & TEXTURE:
+  gl_FrontColor = gl_Color;
+  gl_TexCoord[0] = gl_MultiTexCoord0;
+  gl_TexCoord[1] = gl_MultiTexCoord1;
+}
+

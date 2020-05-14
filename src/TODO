@@ -1,0 +1,19 @@
+TODO:
+
+- save active frame and hidden layers state with artwork
+- also could be useful to save the brush state
+
+ -------- not absolutely necessary --------
+- implement movies similar to slides
+- edit marks
+- backup for non-haptic version of hybrid drawing
+- backing up doesn't work well when there is a kink in the line
+
+
+----------------------------------------------------
+CVS tagged versions of the code:
+
+loadstextfiles - 3/31/06 3:30pm: tagged this release just before
+cleaning up much of the code to work with the new binary format that
+saves brushstates and breaking text file loading/saving in the
+process.
