@@ -48,7 +48,7 @@ public:
     double            origR2VSScale;
   };
   
-  History(MinVR::EventMgrRef eventMgr,  MinVR::GfxMgrRef gfxMgr);
+  History(EventMgrRef eventMgr,  GfxMgrRef gfxMgr);
   virtual ~History();
 
   /// Returns a string describing the next operation in the undo
@@ -73,8 +73,8 @@ private:
   History(const History &);
   History& operator=(const History &);
 
-  MinVR::EventMgrRef          _eventMgr;
-  MinVR::GfxMgrRef            _gfxMgr;
+  EventMgrRef          _eventMgr;
+  GfxMgrRef            _gfxMgr;
   G3D::Array<HistoryRecord> _undoQueue;
   G3D::Array<HistoryRecord> _redoQueue;
 };

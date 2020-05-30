@@ -62,7 +62,7 @@ MarkBox::hashCode() const
 
 
 
-void buildBSPTree(ArtworkRef artwork, KDTree<MarkBox> &tree, double handleLen, MinVR::GfxMgrRef gfxMgr)
+void buildBSPTree(ArtworkRef artwork, KDTree<MarkBox> &tree, double handleLen, GfxMgrRef gfxMgr)
 {
   tree.clear();
   

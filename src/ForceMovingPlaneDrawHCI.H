@@ -33,8 +33,8 @@ public:
                       BrushRef          brush,
                       CavePaintingCursorsRef cursors,
                       //ForceNetInterface*     forceNetInterface,
-                      MinVR::EventMgrRef            eventMgr,
-                      MinVR::GfxMgrRef              gfxMgr);
+                      EventMgrRef            eventMgr,
+                      GfxMgrRef              gfxMgr);
   virtual ~ForceMovingPlaneDrawHCI();
   
   void setEnabled(bool b);
@@ -57,9 +57,9 @@ private:
 
   BrushRef          _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::FsaRef                 _fsa;
-  MinVR::GfxMgrRef              _gfxMgr;
+  EventMgrRef            _eventMgr;
+  FsaRef                 _fsa;
+  GfxMgrRef              _gfxMgr;
   bool                   _enabled;
   //ForceNetInterface      *_forceNetInterface;
   int                    _drawID;

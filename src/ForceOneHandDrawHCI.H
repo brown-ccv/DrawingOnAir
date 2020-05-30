@@ -29,7 +29,7 @@ public:
                       BrushRef               brush,
                       CavePaintingCursorsRef cursors,
                       //ForceNetInterface*     forceNetInterface,
-                      MinVR::EventMgrRef            eventMgr);
+                      EventMgrRef            eventMgr);
   virtual ~ForceOneHandDrawHCI();
 
   void setEnabled(bool b);

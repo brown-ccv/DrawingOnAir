@@ -25,7 +25,7 @@ class RibbonMark : public Mark
 {
 public:
   RibbonMark(const std::string &name,
-             MinVR::GfxMgrRef gfxMgr,
+             GfxMgrRef gfxMgr,
              TriStripModelRef triStripModel);
 
   virtual ~RibbonMark();

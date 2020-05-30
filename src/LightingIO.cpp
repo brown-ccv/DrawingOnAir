@@ -33,7 +33,7 @@ LightingIO::deserializeGLight(BinaryInput &b)
 
 
 void
-LightingIO::serializeLighting(LightingRef lighting, MinVR::GfxMgrRef gfxMgr, BinaryOutput &b)
+LightingIO::serializeLighting(LightingRef lighting, GfxMgrRef gfxMgr, BinaryOutput &b)
 {
   lighting->ambientTop.serialize(b);
   lighting->ambientBottom.serialize(b);
@@ -50,7 +50,7 @@ LightingIO::serializeLighting(LightingRef lighting, MinVR::GfxMgrRef gfxMgr, Bin
 }
 
 void
-LightingIO::deserializeLighting(LightingRef lighting, MinVR::GfxMgrRef gfxMgr, BinaryInput &b)
+LightingIO::deserializeLighting(LightingRef lighting, GfxMgrRef gfxMgr, BinaryInput &b)
 {
   if (lighting.isNull()) {
     lighting = Lighting::create();

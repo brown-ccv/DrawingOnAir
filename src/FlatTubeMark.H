@@ -25,7 +25,7 @@ class FlatTubeMark : public Mark
 {
 public:
   FlatTubeMark(const std::string &name, 
-               MinVR::GfxMgrRef gfxMgr,
+               GfxMgrRef gfxMgr,
                TriStripModelRef triStripModel);
 
   virtual ~FlatTubeMark();

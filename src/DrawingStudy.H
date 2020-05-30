@@ -41,10 +41,10 @@ typedef G3D::ReferenceCountedPointer<class DrawingDisabler> DrawingDisablerRef;
 class DrawingDisabler : public WidgetHCI
 {
 public:
-  DrawingDisabler(MinVR::EventMgrRef eventMgr, HCIMgrRef hciMgr, BrushRef brush, G3D::Array<std::string> brushMoveTriggers) 
+  DrawingDisabler(EventMgrRef eventMgr, HCIMgrRef hciMgr, BrushRef brush, G3D::Array<std::string> brushMoveTriggers) 
     : WidgetHCI(hciMgr) {
     _brush = brush;
-    _fsa = new MinVR::Fsa("DrawingDisabler");
+    _fsa = new Fsa("DrawingDisabler");
     _fsa->addState("DoNothing");
     _fsa->addState("CaptureBrushMovement");
     _fsa->addArc("BrushMove", "CaptureBrushMovement", "CaptureBrushMovement", brushMoveTriggers);
@@ -68,13 +68,13 @@ public:
 private:
   DrawingDisabler(const DrawingDisabler &);
   BrushRef _brush;
-  MinVR::FsaRef   _fsa;
+  FsaRef   _fsa;
 };
 
 
 /**
 */
-class DrawingStudy : public MinVR::VRG3DBaseApp
+class DrawingStudy : public VRG3DBaseApp
 {
 public:
 

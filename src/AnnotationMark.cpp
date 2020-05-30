@@ -12,7 +12,7 @@ namespace DrawOnAir {
 
   
 AnnotationMark::AnnotationMark(const std::string &name,
-                               MinVR::GfxMgrRef gfxMgr,
+                               GfxMgrRef gfxMgr,
                                AnnotationModelRef annotationModel) :
   Mark(name, false, false, gfxMgr) 
 {

@@ -21,10 +21,10 @@ WidgetHCI::activateViaHCIMgr()
 
 
 
-HCIMgr::HCIMgr(const Array<std::string> pointerMoveEvents, MinVR::EventMgrRef eventMgr)
+HCIMgr::HCIMgr(const Array<std::string> pointerMoveEvents, EventMgrRef eventMgr)
 {
   _eventMgr = eventMgr;
-  _fsa = new MinVR::Fsa("HCIMgr");
+  _fsa = new Fsa("HCIMgr");
   _fsa->addState("Start");
   _fsa->addArc("PointerMove", "Start", "Start", pointerMoveEvents);
   _fsa->addArcCallback("PointerMove", this, &HCIMgr::pointerMove);

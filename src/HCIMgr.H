@@ -87,7 +87,7 @@ private:
 class HCIMgr : public G3D::ReferenceCountedObject
 {
 public:
-  HCIMgr(const G3D::Array<std::string> pointerMoveEvents, MinVR::EventMgrRef eventMgr);
+  HCIMgr(const G3D::Array<std::string> pointerMoveEvents, EventMgrRef eventMgr);
   virtual ~HCIMgr();
 
   bool activateStylusHCI(StylusHCIRef toActivate);
@@ -110,8 +110,8 @@ private:
   /// hovering over them.
   G3D::Array<WidgetHCIRef> _activateOnPointerOver;
 
-  MinVR::EventMgrRef _eventMgr;
-  MinVR::FsaRef      _fsa;
+  EventMgrRef _eventMgr;
+  FsaRef      _fsa;
 
 private:
   HCIMgr(const HCIMgr &);

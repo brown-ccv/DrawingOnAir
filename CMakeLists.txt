@@ -46,6 +46,10 @@ include(AutoBuild)
 AutoBuild_init()
 
 
+#include(AutoBuildMinVR)
+#AutoBuild_use_package_MinVR(${PROJECT_NAME} PUBLIC)
+
+
 #### ADJUST NAMES OF OUTPUT FILES BASED ON BUILD TYPE ####
 
 h1("CONFIGURING BUILD TYPE")

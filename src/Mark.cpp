@@ -10,7 +10,7 @@ namespace DrawOnAir {
 
 Mark::Mark(const std::string &name, 
            bool shouldBeDrawn, bool shouldBePosed, 
-           MinVR::GfxMgrRef gfxMgr)
+           GfxMgrRef gfxMgr)
 {
   _gfxMgr = gfxMgr;
   _name = name;

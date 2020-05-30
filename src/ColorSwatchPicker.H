@@ -25,8 +25,8 @@ typedef G3D::ReferenceCountedPointer<class ColorSwatchPicker> ColorSwatchPickerR
 class ColorSwatchPicker : public WidgetHCI
 {
 public:
-  ColorSwatchPicker(MinVR::GfxMgrRef              gfxMgr,
-                   MinVR::EventMgrRef            eventMgr,
+  ColorSwatchPicker(GfxMgrRef              gfxMgr,
+                   EventMgrRef            eventMgr,
                    // ForceNetInterface*     forceNetInterface,
                     HCIMgrRef              hciMgr,
                     CavePaintingCursorsRef cursors,
@@ -63,11 +63,11 @@ protected:
   BrushRef               _brush;
   CavePaintingCursorsRef _cursors;
   G3D::CoordinateFrame        _frame;
-  MinVR::EventMgrRef            _eventMgr;
+  EventMgrRef            _eventMgr;
   //ForceNetInterface*     _forceNetInterface;
-  MinVR::FsaRef                 _fsa;
+  FsaRef                 _fsa;
   G3D::GFontRef               _font;
-  MinVR::GfxMgrRef              _gfxMgr;
+  GfxMgrRef              _gfxMgr;
   double                 _currentCoord;
   int                    _cbid;
   int                    _curPalette;

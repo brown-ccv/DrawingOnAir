@@ -12,8 +12,8 @@ ForceMovingPlaneDrawHCI::ForceMovingPlaneDrawHCI(Array<std::string>     brushOnT
                                    BrushRef          brush,
                                    CavePaintingCursorsRef cursors,
                                    //ForceNetInterface*     forceNetInterface,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -22,7 +22,7 @@ ForceMovingPlaneDrawHCI::ForceMovingPlaneDrawHCI(Array<std::string>     brushOnT
   //_forceNetInterface = forceNetInterface;
   _enabled = false;
 
-  _fsa = new MinVR::Fsa("ForceMovingPlaneDrawHCI");
+  _fsa = new Fsa("ForceMovingPlaneDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
   _fsa->addArc("BrushMove", "Start", "Start", brushMotionTriggers);

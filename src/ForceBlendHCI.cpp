@@ -47,8 +47,8 @@ ForceBlendHCI::ForceBlendHCI(
     BrushRef               brush,
     CavePaintingCursorsRef cursors,
     //ForceNetInterface*     forceNetInterface,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -57,7 +57,7 @@ ForceBlendHCI::ForceBlendHCI(
   _gfxMgr = gfxMgr;
   _enabled = false;
 
-  _fsa = new MinVR::Fsa("ForceBlendHCIHCI");
+  _fsa = new Fsa("ForceBlendHCIHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
   _fsa->addArc("BrushMove", "Start", "Start", brushMotionTriggers);

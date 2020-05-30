@@ -11,7 +11,7 @@ using namespace G3D;
 namespace DrawOnAir {
 
   
-SlideMark::SlideMark(const std::string &name, MinVR::GfxMgrRef gfxMgr) :
+SlideMark::SlideMark(const std::string &name, GfxMgrRef gfxMgr) :
   Mark(name, true, false, gfxMgr) 
 {
   _gfxMgr = gfxMgr;
@@ -91,7 +91,7 @@ SlideMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
     rd->setTexture(0, tex);
     
     int smax = 1;
-    if (MinVR::getShadowsOn()) {
+    if (getShadowsOn()) {
       smax = 2;
     }
     for (int sh=0;sh<smax;sh++) {      
@@ -100,7 +100,7 @@ SlideMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
         rd->setColor(Color3::white());
       }
       else {
-        MinVR::pushShadowState(rd);
+        pushShadowState(rd);
       }
 
           
@@ -116,7 +116,7 @@ SlideMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
       rd->endPrimitive();
 
       if (sh==1) {
-        MinVR::popShadowState(rd);
+        popShadowState(rd);
       }
       
     }

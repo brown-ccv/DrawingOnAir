@@ -10,8 +10,8 @@ ReverseTapeDrawHCI::ReverseTapeDrawHCI(Array<std::string>     brushOnTriggers,
                                        Array<std::string>     handMotionTriggers,
                                        BrushRef               brush,
                                        CavePaintingCursorsRef cursors,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -21,7 +21,7 @@ ReverseTapeDrawHCI::ReverseTapeDrawHCI(Array<std::string>     brushOnTriggers,
 
   _brush->state->maxPressure = MinVR::ConfigVal("TapeDraw_MaxPressure", 0.0, false);
 
-  _fsa = new MinVR::Fsa("ReverseTapeDrawHCI");
+  _fsa = new Fsa("ReverseTapeDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Painting");
 

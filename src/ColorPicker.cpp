@@ -7,8 +7,8 @@ using namespace G3D;
 
 namespace DrawOnAir {
 
-ColorPicker::ColorPicker(MinVR::GfxMgrRef              gfxMgr,
-                         MinVR::EventMgrRef            eventMgr,
+ColorPicker::ColorPicker(GfxMgrRef              gfxMgr,
+                         EventMgrRef            eventMgr,
                          HCIMgrRef              hciMgr,
                          CavePaintingCursorsRef cursors,
                          Array<std::string>     trackerEvents,
@@ -19,7 +19,7 @@ ColorPicker::ColorPicker(MinVR::GfxMgrRef              gfxMgr,
   CP_GEOM_RAD = MinVR::ConfigVal("ColorPicker_Radius",1.0,false);
   CANCEL_GEOM_RAD = 1.5 * CP_GEOM_RAD;
 
-  _fsa = new MinVR::Fsa("ColorPicker");
+  _fsa = new Fsa("ColorPicker");
   _fsa->addState("Start");
   _fsa->addArc("PickBtnPressed", "Start", "Start", btnEvents);
   _fsa->addArc("TrackerMoved", "Start", "Start", trackerEvents);

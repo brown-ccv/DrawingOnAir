@@ -19,8 +19,8 @@ public:
   static void serializeGLight(const G3D::GLight light, G3D::BinaryOutput &b);
   static G3D::GLight deserializeGLight(G3D::BinaryInput &b);
 
-  static void serializeLighting(G3D::LightingRef lighting, MinVR::GfxMgrRef gfxMgr, G3D::BinaryOutput &b);
-  static void deserializeLighting(G3D::LightingRef lighting, MinVR::GfxMgrRef gfxMgr, G3D::BinaryInput &b);
+  static void serializeLighting(G3D::LightingRef lighting, GfxMgrRef gfxMgr, G3D::BinaryOutput &b);
+  static void deserializeLighting(G3D::LightingRef lighting, GfxMgrRef gfxMgr, G3D::BinaryInput &b);
 
 };
 

@@ -15,7 +15,7 @@ typedef G3D::ReferenceCountedPointer<class PointModelSprites> PointModelSpritesR
 class PointModelSprites: public PointModel 
 {
 public:
-  PointModelSprites(MinVR::GfxMgrRef gfxMgr);
+  PointModelSprites(GfxMgrRef gfxMgr);
   virtual ~PointModelSprites();
 
   virtual int  addModel(const G3D::Array<G3D::Vector3> &points, const G3D::Array<double> &weights, 
@@ -40,7 +40,7 @@ private:
   
   void quickSortPointsByDepth(int left, int right);
 
-  MinVR::GfxMgrRef        _gfxMgr;
+  GfxMgrRef        _gfxMgr;
   int              _numPointsThatFitInVarArea;
   G3D::VARArea::Ref       _varArea;
   G3D::Array<G3D::Vector3>   _pointsArray;

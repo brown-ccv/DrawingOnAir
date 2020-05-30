@@ -33,8 +33,8 @@ typedef G3D::ReferenceCountedPointer<class MarkingMenu> MarkingMenuRef;
 class MarkingMenu : public WidgetHCI
 {
 public:
-  MarkingMenu(MinVR::GfxMgrRef              gfxMgr,
-              MinVR::EventMgrRef            eventMgr,
+  MarkingMenu(GfxMgrRef              gfxMgr,
+              EventMgrRef            eventMgr,
               HCIMgrRef              hciMgr,
               CavePaintingCursorsRef cursors,
               BrushRef          brush,
@@ -85,11 +85,11 @@ protected:
 
   BrushRef          _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef            _eventMgr;
+  EventMgrRef            _eventMgr;
   //ForceNetInterface*     _forceNetInterface;
-  MinVR::FsaRef                 _fsa;
+  FsaRef                 _fsa;
   G3D::GFontRef               _font;
-  MinVR::GfxMgrRef              _gfxMgr;
+  GfxMgrRef              _gfxMgr;
   int                    _cbid;
   G3D::Array<std::string>     _images;
   G3D::Array<std::string>     _helpNames;

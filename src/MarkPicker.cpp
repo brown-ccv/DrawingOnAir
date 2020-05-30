@@ -5,8 +5,8 @@ namespace DrawOnAir {
 
   
 MarkPicker::MarkPicker(
-  MinVR::GfxMgrRef              gfxMgr,
-  MinVR::EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr,
+  EventMgrRef            eventMgr,
    // ForceNetInterface*     forceNetInterface,
     HCIMgrRef              hciMgr,
     Array<std::string>     markNames,

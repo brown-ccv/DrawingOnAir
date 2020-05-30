@@ -10,7 +10,7 @@ namespace DrawOnAir {
 
 
 
-DrawingStudy::DrawingStudy(int argc, char **argv) : MinVR::VRG3DBaseApp(argc, argv)
+DrawingStudy::DrawingStudy(int argc, char **argv) : VRG3DBaseApp(argc, argv)
 {
   //_forceNetInterface = NULL;
 

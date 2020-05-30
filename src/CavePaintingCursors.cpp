@@ -6,8 +6,8 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-CavePaintingCursors::CavePaintingCursors(MinVR::GfxMgrRef gfxMgr, 
-                     MinVR::EventMgrRef eventMgr, BrushRef brush,
+CavePaintingCursors::CavePaintingCursors(GfxMgrRef gfxMgr, 
+                     EventMgrRef eventMgr, BrushRef brush,
                                          Array<std::string> handTrackerTriggers)
 {
   _brush = brush;
@@ -21,7 +21,7 @@ CavePaintingCursors::CavePaintingCursors(MinVR::GfxMgrRef gfxMgr,
 
   gfxMgr->addDrawCallback(this, &CavePaintingCursors::draw);
 
-  MinVR::FsaRef fsa = new MinVR::Fsa("CavePaintingCursors");
+  FsaRef fsa = new Fsa("CavePaintingCursors");
   fsa->addState("Start");
   fsa->addArc("HandMove", "Start", "Start", handTrackerTriggers);
   fsa->addArcCallback("HandMove", this, &CavePaintingCursors::moveHandTracker);
@@ -183,10 +183,10 @@ CavePaintingCursors::drawSphere(RenderDevice *rd, const CoordinateFrame &frame, 
   Draw::sphere(s, rd, color, Color4::clear());
 
   // shadow
-  if (MinVR::getShadowsOn()) {
-    MinVR::pushShadowState(rd);
+  if (getShadowsOn()) {
+    pushShadowState(rd);
     Draw::sphere(s, rd, rd->color(), Color4::clear());
-    MinVR::popShadowState(rd);
+    popShadowState(rd);
   }
 }
 
@@ -198,10 +198,10 @@ CavePaintingCursors::drawWireSphere(RenderDevice *rd, const CoordinateFrame &fra
   Draw::sphere(s, rd, Color4::clear(), color);
 
   // shadow
-  if (MinVR::getShadowsOn()) {
-    MinVR::pushShadowState(rd);
+  if (getShadowsOn()) {
+    pushShadowState(rd);
     Draw::sphere(s, rd, Color4::clear(), rd->color());
-    MinVR::popShadowState(rd);
+    popShadowState(rd);
   }
 }
 
@@ -213,12 +213,12 @@ CavePaintingCursors::drawArrow(RenderDevice *rd, const CoordinateFrame &frame, d
   rd->setTexture(0, NULL);
   Draw::arrow(Vector3(0,0,size), Vector3(0,0,-size), rd, color, size);
 
-  if (MinVR::getShadowsOn()) {
-    MinVR::pushShadowState(rd);
+  if (getShadowsOn()) {
+    pushShadowState(rd);
     // BUG: Draw::arrow calls G3D's line draw routine which inverts rd->getCameraToWorld which crashes
     // when the shadow projection matrix is applied.
     //Draw::arrow(Vector3(0,0,size), Vector3(0,0,-size), rd, rd->color(), size);
-    MinVR::popShadowState(rd);
+    popShadowState(rd);
   }
 
   rd->popState();
@@ -285,7 +285,7 @@ CavePaintingCursors::drawRoundBrush(RenderDevice *rd, const CoordinateFrame &fra
   Vector3 coneTop(0,0,size/5.0);
 
   int smax = 1;
-  if (MinVR::getShadowsOn()) {
+  if (getShadowsOn()) {
     smax = 2;
   }
     
@@ -296,7 +296,7 @@ CavePaintingCursors::drawRoundBrush(RenderDevice *rd, const CoordinateFrame &fra
       rd->setTexture(0, _gfxMgr->getTexture("RoundBrushTexture"));
     }
     else {
-      MinVR::pushShadowState(rd);
+      pushShadowState(rd);
       rd->setTexture(0, NULL);
     }
 
@@ -338,7 +338,7 @@ CavePaintingCursors::drawRoundBrush(RenderDevice *rd, const CoordinateFrame &fra
     rd->endPrimitive();     
 
     if (s==1) {
-      MinVR::popShadowState(rd);
+      popShadowState(rd);
     }
   }
 
@@ -848,7 +848,7 @@ CavePaintingCursors::drawLineAsCylinder(const Vector3 &startPoint,
   Array<Vector2> fanTexCoords;
 
   int smax = 1;
-  if (MinVR::getShadowsOn()) {
+  if (getShadowsOn()) {
     smax = 2;
   }
 
@@ -859,7 +859,7 @@ CavePaintingCursors::drawLineAsCylinder(const Vector3 &startPoint,
       renderDevice->setTexture(0, tex);
     }
     else {
-      MinVR::pushShadowState(renderDevice);
+      pushShadowState(renderDevice);
       renderDevice->setTexture(0, NULL);
     }
     
@@ -898,7 +898,7 @@ CavePaintingCursors::drawLineAsCylinder(const Vector3 &startPoint,
     renderDevice->endPrimitive();
 
     if (s==1) {
-      MinVR::popShadowState(renderDevice);
+      popShadowState(renderDevice);
     }
   }
 }

@@ -12,7 +12,7 @@ DirectDrawHCI::DirectDrawHCI(Array<std::string>     brushOnTriggers,
                              Array<std::string>     handMotionTriggers, 
                              BrushRef               brush,
                              CavePaintingCursorsRef cursors,
-                             MinVR::EventMgrRef            eventMgr)
+                             EventMgrRef            eventMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -20,7 +20,7 @@ DirectDrawHCI::DirectDrawHCI(Array<std::string>     brushOnTriggers,
   _enabled = false;
   _dirCalcDistThreshold = MinVR::ConfigVal("DirectDrawHCI_DirCalcDistThreshold", 0.01, false);
 
-  _fsa = new MinVR::Fsa("DirectDrawHCI");
+  _fsa = new Fsa("DirectDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
 

@@ -25,7 +25,7 @@ class KbdSelectWidget : public WidgetHCI
 {
 public:
 
-  KbdSelectWidget(ArtworkRef artwork, MinVR::EventMgrRef eventMgr, HCIMgrRef hciMgr);  
+  KbdSelectWidget(ArtworkRef artwork, EventMgrRef eventMgr, HCIMgrRef hciMgr);  
   virtual ~KbdSelectWidget();
 
   void activate();
@@ -41,8 +41,8 @@ public:
 
 private:
   ArtworkRef  _artwork;
-  MinVR::EventMgrRef _eventMgr;
-  MinVR::FsaRef      _fsa;
+  EventMgrRef _eventMgr;
+  FsaRef      _fsa;
   int         _selectedMark;
   std::string _name;
 

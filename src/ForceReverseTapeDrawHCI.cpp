@@ -10,7 +10,7 @@ ForceReverseTapeDrawHCI::ForceReverseTapeDrawHCI(Array<std::string>     brushOnT
                                    BrushRef          brush,
                                    CavePaintingCursorsRef cursors,
                                    //ForceNetInterface*     forceNetInterface,
-  MinVR::EventMgrRef            eventMgr) :
+  EventMgrRef            eventMgr) :
   DirectDrawHCI(brushOnTriggers, brushMotionTriggers, brushOffTriggers, 
                 handMotionTriggers, brush, cursors, eventMgr)
 {

@@ -22,7 +22,7 @@ typedef G3D::ReferenceCountedPointer<class FishtankDepthCues> FishtankDepthCuesR
 class FishtankDepthCues : public G3D::ReferenceCountedObject
 {
 public:
-  FishtankDepthCues(MinVR::GfxMgrRef gfxMgr);
+  FishtankDepthCues(GfxMgrRef gfxMgr);
   virtual ~FishtankDepthCues();
 
   void draw(G3D::RenderDevice *rd, const G3D::CoordinateFrame &virtualToRoomSpace);
@@ -31,7 +31,7 @@ private:
   FishtankDepthCues(const FishtankDepthCues &);
   FishtankDepthCues& operator=(const FishtankDepthCues &);
 
-  MinVR::GfxMgrRef _gfxMgr;
+  GfxMgrRef _gfxMgr;
 };
 
 

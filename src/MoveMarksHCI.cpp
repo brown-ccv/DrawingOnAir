@@ -11,8 +11,8 @@ MoveMarksHCI::MoveMarksHCI(Array<std::string>     motionTriggers,
                            ArtworkRef             artwork,
                            BrushRef               brush,
                            CavePaintingCursorsRef cursors,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr,
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr,
                            HistoryRef             history)
 {
   _artwork = artwork;
@@ -23,7 +23,7 @@ MoveMarksHCI::MoveMarksHCI(Array<std::string>     motionTriggers,
   _history = history;
   _enabled = false;
 
-  _fsa = new MinVR::Fsa("MoveMarksHCI");
+  _fsa = new Fsa("MoveMarksHCI");
   _fsa->addState("Start");
   _fsa->addState("Dragging");
   _fsa->addArc("Move", "Start", "Start", motionTriggers);

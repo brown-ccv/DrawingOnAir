@@ -16,8 +16,8 @@ ForceHybridDrawHCI::ForceHybridDrawHCI(Array<std::string>     brushOnTriggers,
                                        BrushRef               brush,
                                        CavePaintingCursorsRef cursors,
                                       // ForceNetInterface*     forceNetInterface,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
  // _forceNetInterface = forceNetInterface;
   _brush = brush;
@@ -33,7 +33,7 @@ ForceHybridDrawHCI::ForceHybridDrawHCI(Array<std::string>     brushOnTriggers,
   _backupLength = MinVR::ConfigVal("DragDrawing_BackupLength", 0.05, false);
   _lineLength = MinVR::ConfigVal("DragDrawing_LineLength", 0.15, false);
 
-  _fsa = new MinVR::Fsa("ForceHybridDrawHCI");
+  _fsa = new Fsa("ForceHybridDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
 
@@ -572,12 +572,12 @@ ForceHybridDrawHCI::draw(RenderDevice *rd, const CoordinateFrame &virtualToRoomS
   rd->setColor(MinVR::ConfigVal("BackupPointsColor", Color3(0.8, 0.35, 0.35), false));
   rd->setPointSize(2.0);
   int smax = 1;
-  if (MinVR::getShadowsOn()) {
+  if (getShadowsOn()) {
     smax = 2;
   }
   for (int s=0;s<smax;s++) {
     if (s==1) {
-      MinVR::pushShadowState(rd);
+      pushShadowState(rd);
     }
     for (int i=0;i<_redrawLines.size();i++) {
       rd->beginPrimitive(PrimitiveType::POINTS);
@@ -587,7 +587,7 @@ ForceHybridDrawHCI::draw(RenderDevice *rd, const CoordinateFrame &virtualToRoomS
       rd->endPrimitive();
     }
     if (s==1) {
-      MinVR::popShadowState(rd);
+      popShadowState(rd);
     }
   }
   rd->popState();

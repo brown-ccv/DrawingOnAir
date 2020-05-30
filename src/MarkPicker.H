@@ -19,8 +19,8 @@ typedef G3D::ReferenceCountedPointer<class MarkPicker> MarkPickerRef;
 class MarkPicker : public PickerWidget
 {
 public:
-  MarkPicker(MinVR::GfxMgrRef              gfxMgr,
-             MinVR::EventMgrRef            eventMgr,
+  MarkPicker(GfxMgrRef              gfxMgr,
+             EventMgrRef            eventMgr,
              //ForceNetInterface*     forceNetInterface,
              HCIMgrRef              hciMgr,
              G3D::Array<std::string>     markNames,

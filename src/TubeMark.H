@@ -23,7 +23,7 @@ class TubeMark : public Mark
 {
 public:
   TubeMark(const std::string &name, 
-           MinVR::GfxMgrRef gfxMgr,
+           GfxMgrRef gfxMgr,
            TriStripModelRef triStripModel);
 
   virtual ~TubeMark();

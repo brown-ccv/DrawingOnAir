@@ -34,8 +34,8 @@ public:
     AUTO_LAYOUT = 0
   };
 
-  PickerWidget(MinVR::GfxMgrRef              gfxMgr,
-               MinVR::EventMgrRef            eventMgr,
+  PickerWidget(GfxMgrRef              gfxMgr,
+               EventMgrRef            eventMgr,
                //ForceNetInterface*     forceNetInterface,
                HCIMgrRef              hciMgr,
                BrushRef               brush,
@@ -95,9 +95,9 @@ protected:
   bool                _hidden;
   BrushRef            _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef         _eventMgr;
+  EventMgrRef         _eventMgr;
   //ForceNetInterface*  _forceNetInterface;
-  MinVR::GfxMgrRef           _gfxMgr;
+  GfxMgrRef           _gfxMgr;
   int                 _numItems;
   G3D::Vector3             _itemSize;
   G3D::Vector2             _itemSpacing;
@@ -106,7 +106,7 @@ protected:
   G3D::Array<G3D::AABox>        _boundingBoxes;
   G3D::CoordinateFrame     _frame;
   int                 _curSelected;  
-  MinVR::FsaRef              _fsa;
+  FsaRef              _fsa;
   G3D::CoordinateFrame     _moveOffset;
   bool                _firstMove;
   int                 _drawID;

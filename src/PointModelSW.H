@@ -15,7 +15,7 @@ typedef G3D::ReferenceCountedPointer<class PointModelSW> PointModelSWRef;
 class PointModelSW: public PointModel 
 {
 public:
-  PointModelSW(MinVR::GfxMgrRef gfxMgr);
+  PointModelSW(GfxMgrRef gfxMgr);
   virtual ~PointModelSW();
 
   virtual int  addModel(const G3D::Array<G3D::Vector3> &points, const G3D::Array<double> &weights, 
@@ -40,7 +40,7 @@ private:
 
   void quickSortPointsByDepth(int left, int right);
 
-  MinVR::GfxMgrRef        _gfxMgr;
+  GfxMgrRef        _gfxMgr;
   int              _numPointsThatFitInVarArea;
   G3D::VARArea::Ref       _varArea;
   G3D::Array<G3D::Vector3>   _pointsArray;      // each 4 points in a row are the same

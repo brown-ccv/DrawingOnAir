@@ -20,8 +20,8 @@ typedef G3D::ReferenceCountedPointer<class BrushSizePicker> BrushSizePickerRef;
 class BrushSizePicker : public PickerWidget
 {
 public:
-  BrushSizePicker(MinVR::GfxMgrRef              gfxMgr,
-                  MinVR::EventMgrRef            eventMgr,
+  BrushSizePicker(GfxMgrRef              gfxMgr,
+                  EventMgrRef            eventMgr,
                   //ForceNetInterface*     forceNetInterface,
                   HCIMgrRef              hciMgr,
                   BrushRef               brush,

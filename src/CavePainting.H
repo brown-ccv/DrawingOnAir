@@ -64,7 +64,7 @@ namespace DrawOnAir {
     your program, all you need to do is call
     CavePainting::fromArguments(argc, argv);
 */
-class CavePainting : public MinVR::VRG3DBaseApp
+class CavePainting : public VRG3DBaseApp
 {
 public:
 
@@ -73,7 +73,7 @@ public:
 
   /// Overrides VRBaseApp version
   virtual void doGraphics(G3D::RenderDevice *rd);
-
+  void onRenderGraphicsScene(const MinVR::VRGraphicsState& state);
   // Callback methods that respond to Menu events, button presses, etc..
  
   void activateReframeArtwork(MinVR::EventRef e);  
@@ -203,9 +203,9 @@ private:
   ForceReverseTapeDrawHCIRef _forceReverseTapeDrawHCI;
   ForceTapeDrawHCIRef        _forceTapeDrawHCI;
   FrameWidgetRef             _frameWidget;
-  MinVR::FsaRef                     _ambientTopFsa;
-  MinVR::FsaRef                     _ambientBottomFsa;
-  MinVR::FsaRef                     _bgColFsa;
+  FsaRef                     _ambientTopFsa;
+  FsaRef                     _ambientBottomFsa;
+  FsaRef                     _bgColFsa;
   HCIMgrRef                  _hciMgr;
   HistoryRef                 _history;
   HybridDrawHCIRef           _hybridDrawHCI;

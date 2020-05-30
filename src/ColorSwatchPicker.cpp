@@ -8,8 +8,8 @@ using namespace G3D;
 namespace DrawOnAir {
 
 
-ColorSwatchPicker::ColorSwatchPicker(MinVR::GfxMgrRef              gfxMgr,
-                                     MinVR::EventMgrRef            eventMgr,
+ColorSwatchPicker::ColorSwatchPicker(GfxMgrRef              gfxMgr,
+                                     EventMgrRef            eventMgr,
                                      //ForceNetInterface*     forceNetInterface,
                                      HCIMgrRef              hciMgr,
                                      CavePaintingCursorsRef cursors,
@@ -28,7 +28,7 @@ ColorSwatchPicker::ColorSwatchPicker(MinVR::GfxMgrRef              gfxMgr,
   _frame = initialFrame;
   _currentCoord = 0.0;
 
-  _fsa = new MinVR::Fsa("ColorSwatchPicker");
+  _fsa = new Fsa("ColorSwatchPicker");
   _fsa->addState("Start");
   _fsa->addState("Drag");
   _fsa->addArc("TrackerMove", "Start", "Start", trackerTriggers);

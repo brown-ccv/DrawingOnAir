@@ -170,11 +170,29 @@ target_link_libraries(DrawingOnAir PUBLIC ${JPEG_LIBRARIES})
 target_link_libraries(DrawingOnAir PUBLIC ${ZIP_LIBRARIES})
 target_link_libraries(DrawingOnAir PUBLIC ${ZLIB_LIBRARIES})
 
+find_package(MinVR MODULE REQUIRED)
+target_include_directories(DrawingOnAir PUBLIC ${MinVR_INCLUDE_DIRS})
+target_include_directories(DrawingOnAir PUBLIC ${MinVRG3D_INCLUDE_DIR})
+target_link_libraries(DrawingOnAir PUBLIC ${MINVR_LIBRARIES})
+target_link_libraries(DrawingOnAir PUBLIC ${MINVRG3D_LIBRARIES})
+
+
+find_package(VRG3DBase MODULE REQUIRED)
+target_include_directories(DrawingOnAir PUBLIC ${VRG3DBase_INCLUDE_DIR})
+target_link_libraries(DrawingOnAir PUBLIC ${VRG3DBase_LIBRARY})
+
+
+
+#if(${G3D_INCLUDE_DIRS})
+#set_property(GLOBAL PROPERTY DRAW_ON_AIR_G3D_INCLUDE_DIR "${G3D_INCLUDE_DIRS}")
+#else()
+
+
 
 # Add external dependency on VRG3D (includes VRBase)
-find_package(VRG3D MODULE REQUIRED)
-target_include_directories(DrawingOnAir PUBLIC ${VRG3D_INCLUDE_DIRS})
-target_link_libraries(DrawingOnAir PUBLIC ${VRG3D_LIBRARIES})
+#find_package(VRG3D MODULE REQUIRED)
+#target_include_directories(DrawingOnAir PUBLIC ${VRG3D_INCLUDE_DIRS})
+#target_link_libraries(DrawingOnAir PUBLIC ${VRG3D_LIBRARIES})
 
 # Add external dependency on VRPN
 find_package(VRPN MODULE REQUIRED)

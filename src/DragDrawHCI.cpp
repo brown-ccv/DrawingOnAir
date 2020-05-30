@@ -13,8 +13,8 @@ DragDrawHCI::DragDrawHCI(Array<std::string>     brushOnTriggers,
                          Array<std::string>     handMotionTriggers, 
                          BrushRef               brush,
                          CavePaintingCursorsRef cursors,
-                         MinVR::EventMgrRef            eventMgr,
-                         MinVR::GfxMgrRef              gfxMgr)
+                         EventMgrRef            eventMgr,
+                         GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -23,7 +23,7 @@ DragDrawHCI::DragDrawHCI(Array<std::string>     brushOnTriggers,
   _enabled = false;
   _lineLength = MinVR::ConfigVal("DragDrawHCI_ShortLineLength", 0.01, false);
 
-  _fsa = new MinVR::Fsa("DragDrawHCI");
+  _fsa = new Fsa("DragDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
 

@@ -25,7 +25,7 @@ using namespace G3D;
 namespace DrawOnAir {
 
 
-PointModelSW::PointModelSW(MinVR::GfxMgrRef gfxMgr) : PointModel()
+PointModelSW::PointModelSW(GfxMgrRef gfxMgr) : PointModel()
 {
   _gfxMgr = gfxMgr;
   _lastIndexInBSPTree = -1;

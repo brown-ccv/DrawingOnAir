@@ -5,8 +5,8 @@ using namespace G3D;
 namespace DrawOnAir {
 
   
-SlidePicker::SlidePicker(MinVR::GfxMgrRef              gfxMgr,
-  MinVR::EventMgrRef            eventMgr,
+SlidePicker::SlidePicker(GfxMgrRef              gfxMgr,
+  EventMgrRef            eventMgr,
                          //ForceNetInterface*     forceNetInterface,
                          HCIMgrRef              hciMgr,
                          BrushRef               brush,
@@ -40,7 +40,7 @@ SlidePicker::SlidePicker(MinVR::GfxMgrRef              gfxMgr,
 }
 
 void
-SlidePicker::loadSlideImages(MinVR::GfxMgrRef gfxMgr, Array<std::string> &keyNames)
+SlidePicker::loadSlideImages(GfxMgrRef gfxMgr, Array<std::string> &keyNames)
 {
   // lookup slides
   Array<std::string> files;

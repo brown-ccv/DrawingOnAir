@@ -7,14 +7,14 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-KbdSelectWidget::KbdSelectWidget(ArtworkRef artwork, MinVR::EventMgrRef eventMgr,
+KbdSelectWidget::KbdSelectWidget(ArtworkRef artwork, EventMgrRef eventMgr,
   HCIMgrRef hciMgr) : WidgetHCI(hciMgr)
 {
   _artwork = artwork;
   _eventMgr = eventMgr;
   _selectedMark = 0;
 
-  _fsa = new MinVR::Fsa("KbdSelectWidget");
+  _fsa = new Fsa("KbdSelectWidget");
   _fsa->addState("Start");
   _fsa->addState("Naming");
   _fsa->addArc("Next", "Start", "Start", MinVR::splitStringIntoArray("kbd_RIGHT_down"));

@@ -23,7 +23,7 @@ class AnnotationMark : public Mark
 {
 public:
   AnnotationMark(const std::string &name,
-                 MinVR::GfxMgrRef gfxMgr,
+                 GfxMgrRef gfxMgr,
                  AnnotationModelRef annotationModel);
   
   virtual ~AnnotationMark();

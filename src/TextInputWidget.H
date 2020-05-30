@@ -24,8 +24,8 @@ class TextInputWidget : public WidgetHCI
 {
 public:
 
-  TextInputWidget(MinVR::GfxMgrRef              gfxMgr,
-                  MinVR::EventMgrRef            eventMgr,
+  TextInputWidget(GfxMgrRef              gfxMgr,
+                  EventMgrRef            eventMgr,
                   HCIMgrRef              hciMgr,
                   G3D::Array<std::string>     enterEvents);
   
@@ -44,11 +44,11 @@ protected:
 
   void deactivate();
 
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::FsaRef                 _fsa;
+  EventMgrRef            _eventMgr;
+  FsaRef                 _fsa;
   G3D::GFontRef               _font;
-  MinVR::GfxMgrRef              _gfxMgr;
-  MinVR::EventFilterRef         _kbdFilter;
+  GfxMgrRef              _gfxMgr;
+  EventFilterRef         _kbdFilter;
   std::string            _text;
   int                    _drawID;
   bool                   _shouldDraw;

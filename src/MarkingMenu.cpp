@@ -8,8 +8,8 @@ using namespace G3D;
 namespace DrawOnAir {
 
 
-MarkingMenu::MarkingMenu(MinVR::GfxMgrRef              gfxMgr,
-                         MinVR::EventMgrRef            eventMgr,
+MarkingMenu::MarkingMenu(GfxMgrRef              gfxMgr,
+                         EventMgrRef            eventMgr,
                          HCIMgrRef              hciMgr,
                          CavePaintingCursorsRef cursors,
                          BrushRef          brush,
@@ -43,7 +43,7 @@ MarkingMenu::MarkingMenu(MinVR::GfxMgrRef              gfxMgr,
   ITEM_SPACING = MinVR::ConfigVal("MarkingMenu_ItemSpacing",0.55,false);
   OFFSET_DIST = MinVR::ConfigVal("MarkingMenu_OffsetDist",0.05,false);
   
-  _fsa = new MinVR::Fsa("MarkingMenu");
+  _fsa = new Fsa("MarkingMenu");
   _fsa->addState("Start");
   _fsa->addState("Drag");
   _fsa->addArc("TrackerMove", "Start", "Start", trackerTriggers);

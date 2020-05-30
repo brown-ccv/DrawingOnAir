@@ -23,7 +23,7 @@ typedef G3D::ReferenceCountedPointer<class CavePaintingCursors> CavePaintingCurs
 class CavePaintingCursors : public G3D::ReferenceCountedObject
 {
 public:
-  CavePaintingCursors(MinVR::GfxMgrRef gfxMgr, MinVR::EventMgrRef eventMgr, BrushRef brush,
+  CavePaintingCursors(GfxMgrRef gfxMgr, EventMgrRef eventMgr, BrushRef brush,
                       G3D::Array<std::string> handTrackerTriggers);
   virtual ~CavePaintingCursors();
 
@@ -86,7 +86,7 @@ private:
   G3D::VAR             _varBrushTexCoords;
   G3D::VAR             _varBrushNormals;
   G3D::Array<G3D::uint32>   _brushIndices;
-  MinVR::GfxMgrRef       _gfxMgr;
+  GfxMgrRef       _gfxMgr;
   double          _sphereTipRad;
   G3D::Vector3         _lastGoodUpVec;
   G3D::Vector3         _lastGoodRightVec;

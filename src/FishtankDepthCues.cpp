@@ -4,7 +4,7 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-FishtankDepthCues::FishtankDepthCues(MinVR::GfxMgrRef gfxMgr)
+FishtankDepthCues::FishtankDepthCues(GfxMgrRef gfxMgr)
 {
   _gfxMgr = gfxMgr;
   // switched to calling this directly from cavepainting class

@@ -29,7 +29,7 @@ using namespace G3D;
 namespace DrawOnAir {
 
 
-PointModelSprites::PointModelSprites(MinVR::GfxMgrRef gfxMgr) : PointModel()
+PointModelSprites::PointModelSprites(GfxMgrRef gfxMgr) : PointModel()
 {
   debugAssert(Shader::supportsVertexShaders());
   debugAssert(Shader::supportsPixelShaders());

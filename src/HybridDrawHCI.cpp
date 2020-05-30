@@ -12,8 +12,8 @@ HybridDrawHCI::HybridDrawHCI(Array<std::string>     brushOnTriggers,
                              Array<std::string>     handOffTriggers,
                              BrushRef               brush,
                              CavePaintingCursorsRef cursors,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -25,7 +25,7 @@ HybridDrawHCI::HybridDrawHCI(Array<std::string>     brushOnTriggers,
   _reverse = false;
   _dispConstLenDragLine = false;
 
-  _fsa = new MinVR::Fsa("HybridDrawHCI");
+  _fsa = new Fsa("HybridDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Drag");
   _fsa->addState("Tape");

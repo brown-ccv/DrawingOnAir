@@ -4,8 +4,8 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-ReframeArtworkHCI::ReframeArtworkHCI(MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr,
+ReframeArtworkHCI::ReframeArtworkHCI(EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr,
                                      HCIMgrRef              hciMgr,
                                      CavePaintingCursorsRef cursors,
                                      Array<std::string>     tracker1Triggers,
@@ -18,7 +18,7 @@ ReframeArtworkHCI::ReframeArtworkHCI(MinVR::EventMgrRef            eventMgr,
   _eventMgr = eventMgr;
   _gfxMgr = gfxMgr;
   _cursors = cursors;
-  _fsa = new MinVR::Fsa("ReframeArtworkHCI");
+  _fsa = new Fsa("ReframeArtworkHCI");
   _fsa->addState("Moving");
   _fsa->addState("Scaling");
 

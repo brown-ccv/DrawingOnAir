@@ -10,8 +10,8 @@ DeleteHCI::DeleteHCI(Array<std::string>     motionTriggers,
                      ArtworkRef             artwork,
                      BrushRef               brush,
                      CavePaintingCursorsRef cursors,
-                     MinVR::EventMgrRef            eventMgr,
-                     MinVR::GfxMgrRef              gfxMgr,
+                     EventMgrRef            eventMgr,
+                     GfxMgrRef              gfxMgr,
                      HistoryRef             history)
 {
   _artwork = artwork;
@@ -22,7 +22,7 @@ DeleteHCI::DeleteHCI(Array<std::string>     motionTriggers,
   _history = history;
   _enabled = false;
 
-  _fsa = new MinVR::Fsa("DeleteHCI");
+  _fsa = new Fsa("DeleteHCI");
   _fsa->addState("Start");
   _fsa->addState("Pressed");
   _fsa->addArc("Move", "Start", "Start", motionTriggers);

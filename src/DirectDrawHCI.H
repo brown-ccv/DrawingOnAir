@@ -31,7 +31,7 @@ public:
                 G3D::Array<std::string>     handMotionTriggers, 
                 BrushRef               brush,
                 CavePaintingCursorsRef cursors,
-                MinVR::EventMgrRef            eventMgr);
+                EventMgrRef            eventMgr);
   virtual ~DirectDrawHCI();
 
   void setEnabled(bool b);
@@ -54,8 +54,8 @@ public:
 protected:
   BrushRef               _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::FsaRef                 _fsa;
+  EventMgrRef            _eventMgr;
+  FsaRef                 _fsa;
   bool                   _enabled;
   G3D::Vector3                _lastPosForDirCalc;
   double                 _dirCalcDistThreshold;

@@ -33,8 +33,8 @@ public:
                    BrushRef               brush,
                    CavePaintingCursorsRef cursors,
                    //ForceNetInterface*     forceNetInterface,
-                   MinVR::EventMgrRef            eventMgr,
-    MinVR::GfxMgrRef              gfxMgr);
+                   EventMgrRef            eventMgr,
+    GfxMgrRef              gfxMgr);
   virtual ~ForceTapeDrawHCI();
 
   virtual void setEnabled(bool b);
@@ -62,9 +62,9 @@ protected:
 
   BrushRef               _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::FsaRef                 _fsa;
-  MinVR::GfxMgrRef              _gfxMgr;
+  EventMgrRef            _eventMgr;
+  FsaRef                 _fsa;
+  GfxMgrRef              _gfxMgr;
   MarkRef                _backupMark;
   bool                   _enabled;
   //ForceNetInterface     *_forceNetInterface;

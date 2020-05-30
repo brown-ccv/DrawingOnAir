@@ -31,8 +31,8 @@ public:
               G3D::Array<std::string>     handMotionTriggers,
               BrushRef          brush,
               CavePaintingCursorsRef cursors,
-              MinVR::EventMgrRef            eventMgr,
-    MinVR::GfxMgrRef              gfxMgr);
+              EventMgrRef            eventMgr,
+    GfxMgrRef              gfxMgr);
   virtual ~TapeDrawHCI();
 
   void setEnabled(bool b);
@@ -51,9 +51,9 @@ public:
 protected:
   BrushRef          _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::FsaRef                 _fsa;
-  MinVR::GfxMgrRef              _gfxMgr;
+  EventMgrRef            _eventMgr;
+  FsaRef                 _fsa;
+  GfxMgrRef              _gfxMgr;
   bool                   _enabled;
   G3D::Vector3                _handPos;
   G3D::Vector3                _lastBrushPos;

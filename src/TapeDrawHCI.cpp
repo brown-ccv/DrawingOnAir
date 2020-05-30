@@ -11,8 +11,8 @@ TapeDrawHCI::TapeDrawHCI(Array<std::string>     brushOnTriggers,
                          Array<std::string>     handMotionTriggers,
                          BrushRef               brush,
                          CavePaintingCursorsRef cursors,
-  MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+  EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -20,7 +20,7 @@ TapeDrawHCI::TapeDrawHCI(Array<std::string>     brushOnTriggers,
   _gfxMgr = gfxMgr;
   _enabled = false;
 
-  _fsa = new MinVR::Fsa("TapeDrawHCI");
+  _fsa = new Fsa("TapeDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Painting");
 

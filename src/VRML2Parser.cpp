@@ -8,7 +8,7 @@ VRML2Parser::loadFromFile(const std::string &filename,
                           Array<int> &indices,
                           double uniformScale)
 {
-  MinVR::TextFileReader tf(filename);
+  TextFileReader tf(filename);
   std::string text;
   tf.getTextUntilToken("point [", text, true);
   tf.getTextUntilToken("\n", text, true);
@@ -157,7 +157,7 @@ VRML2Parser::loadVINFromFile(const std::string &filename,
 						   Array<Vector3> &normals,
                            double uniformScale)
 {
-  MinVR::TextFileReader tf(filename);
+  TextFileReader tf(filename);
   std::string text;
   tf.getTextUntilToken("point [", text, true);
   tf.getTextUntilToken("\n", text, true);

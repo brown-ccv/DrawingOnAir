@@ -20,8 +20,8 @@ typedef G3D::ReferenceCountedPointer<class PatternPicker> PatternPickerRef;
 class PatternPicker : public PickerWidget
 {
 public:
-  PatternPicker(MinVR::GfxMgrRef              gfxMgr,
-                MinVR::EventMgrRef            eventMgr,
+  PatternPicker(GfxMgrRef              gfxMgr,
+                EventMgrRef            eventMgr,
                 //ForceNetInterface*     forceNetInterface,
                 HCIMgrRef              hciMgr,
                 BrushRef               brush,

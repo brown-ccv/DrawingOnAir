@@ -20,8 +20,8 @@ typedef G3D::ReferenceCountedPointer<class LoadFilePicker> LoadFilePickerRef;
 class LoadFilePicker : public PickerWidget
 {
 public:
-  LoadFilePicker(MinVR::GfxMgrRef              gfxMgr,
-                 MinVR::EventMgrRef            eventMgr,
+  LoadFilePicker(GfxMgrRef              gfxMgr,
+                 EventMgrRef            eventMgr,
                 // ForceNetInterface*     forceNetInterface,
                  HCIMgrRef              hciMgr,
                  BrushRef               brush,

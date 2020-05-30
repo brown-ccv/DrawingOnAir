@@ -27,8 +27,8 @@ typedef G3D::ReferenceCountedPointer<class Brush> BrushRef;
 class Brush : public G3D::ReferenceCountedObject
 {
 public:
-  Brush(BrushStateRef brushState, ArtworkRef artwork, MinVR::GfxMgrRef gfxMgr, 
-    MinVR::EventMgrRef eventMgr, HistoryRef history);
+  Brush(BrushStateRef brushState, ArtworkRef artwork, GfxMgrRef gfxMgr, 
+    EventMgrRef eventMgr, HistoryRef history);
   virtual ~Brush();
 
   BrushStateRef state;
@@ -64,9 +64,9 @@ private:
   Brush& operator=(const Brush &);
 
   ArtworkRef         _artwork;
-  MinVR::EventMgrRef        _eventMgr;
-  MinVR::FsaRef             _nameChangeFsa;
-  MinVR::GfxMgrRef          _gfxMgr;
+  EventMgrRef        _eventMgr;
+  FsaRef             _nameChangeFsa;
+  GfxMgrRef          _gfxMgr;
   HistoryRef         _history;
   MarkRef            _nameMark;
   TextInputWidgetRef _textInputWidget;

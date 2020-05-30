@@ -10,8 +10,8 @@ using namespace G3D;
 namespace DrawOnAir {
 
 
-PickerWidget::PickerWidget(MinVR::GfxMgrRef              gfxMgr,
-                           MinVR::EventMgrRef            eventMgr,
+PickerWidget::PickerWidget(GfxMgrRef              gfxMgr,
+                           EventMgrRef            eventMgr,
                            //ForceNetInterface*     forceNetInterface,
                            HCIMgrRef              hciMgr,
                            BrushRef               brush,
@@ -40,7 +40,7 @@ PickerWidget::PickerWidget(MinVR::GfxMgrRef              gfxMgr,
   _hidden = _pointerActivates;
   generateLayout();
 
-  _fsa = new MinVR::Fsa("_name");
+  _fsa = new Fsa("_name");
   _fsa->addState("Start");
   _fsa->addState("Dragging");
   _fsa->addArc("PickBtnPressed", "Start", "Start", btnDownEvents);

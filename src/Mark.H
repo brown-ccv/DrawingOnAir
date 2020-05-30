@@ -29,7 +29,7 @@ typedef G3D::ReferenceCountedPointer<class Mark> MarkRef;
 class Mark : public G3D::ReferenceCountedObject
 {
 public:
-  Mark(const std::string &name, bool shouldBeDrawn, bool shouldBePosed, MinVR::GfxMgrRef gfxMgr);
+  Mark(const std::string &name, bool shouldBeDrawn, bool shouldBePosed, GfxMgrRef gfxMgr);
   virtual ~Mark() {}
 
   virtual MarkRef copy() = 0;
@@ -128,7 +128,7 @@ public:
 
 protected:
 
-  MinVR::GfxMgrRef              _gfxMgr;
+  GfxMgrRef              _gfxMgr;
   std::string            _name;
   bool                   _shouldBeDrawn;
   bool                   _shouldBePosed;

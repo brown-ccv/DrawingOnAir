@@ -4,8 +4,8 @@ using namespace G3D;
 namespace DrawOnAir {
 
   
-BrushTipPicker::BrushTipPicker(MinVR::GfxMgrRef              gfxMgr,
-                               MinVR::EventMgrRef            eventMgr,
+BrushTipPicker::BrushTipPicker(GfxMgrRef              gfxMgr,
+                               EventMgrRef            eventMgr,
                                //ForceNetInterface*     forceNetInterface,
                                HCIMgrRef              hciMgr,
                                BrushRef          brush,

@@ -28,7 +28,7 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
   _frictionOn = true;
   _pressureBtnPressed = false;
   _drawFloor = MinVR::ConfigVal("DrawFloor", 1, false);
-  //setShadowsOn(_drawFloor);
+  setShadowsOn(_drawFloor);
   _lastFilename = MinVR::ConfigVal("SaveFileName", "MyDrawing", false);
   if (!endsWith(_lastFilename, ".3DArt")) {
     _lastFilename = _lastFilename + ".3DArt";
@@ -224,7 +224,7 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
 
 
     // Main CavePainting FSA
-    MinVR::FsaRef fsa = new MinVR::Fsa("CavePainting");
+    FsaRef fsa = new Fsa("CavePainting");
     fsa->addState("Start");
     fsa->addState("FilenameTextEnter");
 
@@ -396,7 +396,7 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
 
 
     // Fsa's added to respond to the color picker for lighting changes
-    _ambientTopFsa = new MinVR::Fsa("AmbientTop");
+    _ambientTopFsa = new Fsa("AmbientTop");
     _ambientTopFsa->addState("Start");
     _ambientTopFsa->addArc("Change", "Start", "Start", MinVR::splitStringIntoArray("ColorPicker_ColorModified"));
     _ambientTopFsa->addArcCallback("Change", this, &CavePainting::ambientTopLightColorChange);
@@ -405,7 +405,7 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
     _ambientTopFsa->addArc("Cancel", "Start", "Start", MinVR::splitStringIntoArray("ColorPicker_Cancel"));
     _ambientTopFsa->addArcCallback("Cancel", this, &CavePainting::ambientTopLightColorCancel);
 
-    _ambientBottomFsa = new MinVR::Fsa("AmbientBottom");
+    _ambientBottomFsa = new Fsa("AmbientBottom");
     _ambientBottomFsa->addState("Start");
     _ambientBottomFsa->addArc("Change", "Start", "Start", MinVR::splitStringIntoArray("ColorPicker_ColorModified"));
     _ambientBottomFsa->addArcCallback("Change", this, &CavePainting::ambientBottomLightColorChange);
@@ -414,7 +414,7 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
     _ambientBottomFsa->addArc("Cancel", "Start", "Start", MinVR::splitStringIntoArray("ColorPicker_Cancel"));
     _ambientBottomFsa->addArcCallback("Cancel", this, &CavePainting::ambientBottomLightColorCancel);
 
-    _bgColFsa = new MinVR::Fsa("bgCol");
+    _bgColFsa = new Fsa("bgCol");
     _bgColFsa->addState("Start");
     _bgColFsa->addArc("Change", "Start", "Start", MinVR::splitStringIntoArray("ColorPicker_ColorModified"));
     _bgColFsa->addArcCallback("Change", this, &CavePainting::backgroundColorChange);
@@ -425,13 +425,13 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
   }
   else {
     // Viewer mode
-    new MinVR::ViewerHCI(_eventMgr, _gfxMgr);
+    new ViewerHCI(_eventMgr, _gfxMgr);
 
     Array<std::string> slideTexNames;
 
     SlidePicker::loadSlideImages(_gfxMgr, slideTexNames);
 
-    MinVR::FsaRef fsa = new MinVR::Fsa("CavePainting");
+    FsaRef fsa = new Fsa("CavePainting");
     fsa->addState("Start");
     fsa->addArc("NextFrame", "Start", "Start", MinVR::splitStringIntoArray("kbd_SHIFT_RIGHT_down"));
     fsa->addArcCallback("NextFrame", this, &CavePainting::nextFrame);
@@ -1232,6 +1232,12 @@ CavePainting::doGraphics(RenderDevice *rd)
 }
 
 
+void CavePainting::onRenderGraphicsScene(const MinVR::VRGraphicsState& state)
+{
+  VRG3DBaseApp::onRenderGraphicsScene(state);
+  doGraphics(myRenderDevice);
+}
+
 void
 CavePainting::modelDraw(RenderDevice *rd, const CoordinateFrame &virtualToRoomSpace)
 {
@@ -1271,7 +1277,7 @@ void
 CavePainting::toggleShowShadows(MinVR::EventRef e)
 {
   _drawFloor = !_drawFloor;
-  MinVR::setShadowsOn(_drawFloor);
+  setShadowsOn(_drawFloor);
 }
 
 

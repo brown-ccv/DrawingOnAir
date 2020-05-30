@@ -20,7 +20,7 @@ namespace DrawOnAir {
 
 
 
-Artwork::Artwork(MinVR::GfxMgrRef gfxMgr)
+Artwork::Artwork(GfxMgrRef gfxMgr)
 {
   _gfxMgr = gfxMgr;
   _cbidPose = _gfxMgr->addPoseCallback(this, &Artwork::pose);
@@ -349,7 +349,7 @@ Artwork::deserialize(G3D::BinaryInput &b)
       else {
         alwaysAssertM(false, "Unrecognized Mark type " + desc);
       }
-      MinVR::LoadingScreen::renderAndSwapBuffers(_gfxMgr, 100.0*(float)i/(float)(n-1));
+      LoadingScreen::renderAndSwapBuffers(_gfxMgr, 100.0*(float)i/(float)(n-1));
     }
     
     // lighting

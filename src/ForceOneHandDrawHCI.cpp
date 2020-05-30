@@ -10,7 +10,7 @@ ForceOneHandDrawHCI::ForceOneHandDrawHCI(Array<std::string>     brushOnTriggers,
                                    BrushRef               brush,
                                    CavePaintingCursorsRef cursors,
                                    //ForceNetInterface*     forceNetInterface,
-  MinVR::EventMgrRef            eventMgr) :
+  EventMgrRef            eventMgr) :
   DirectDrawHCI(brushOnTriggers, brushMotionTriggers, brushOffTriggers, 
                 handMotionTriggers, brush, cursors, eventMgr)
 {

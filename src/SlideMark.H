@@ -22,7 +22,7 @@ class SlideMark : public Mark
 {
 public:
   SlideMark(const std::string &name,
-    MinVR::GfxMgrRef gfxMgr);
+    GfxMgrRef gfxMgr);
 
   virtual ~SlideMark();
 

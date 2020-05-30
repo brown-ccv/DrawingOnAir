@@ -33,8 +33,8 @@ public:
              BrushRef               brush,
              CavePaintingCursorsRef cursors,
              //ForceNetInterface*     forceNetInterface,
-             MinVR::EventMgrRef            eventMgr, 
-             MinVR::GfxMgrRef              gfxMgr);
+             EventMgrRef            eventMgr, 
+             GfxMgrRef              gfxMgr);
   virtual ~ForceBlendHCI();
 
   void setEnabled(bool b);
@@ -67,9 +67,9 @@ private:
   BrushRef               _brush;
   CavePaintingCursorsRef _cursors;
   //ForceNetInterface*     _forceNetInterface;
-  MinVR::FsaRef                 _fsa;
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::GfxMgrRef              _gfxMgr;
+  FsaRef                 _fsa;
+  EventMgrRef            _eventMgr;
+  GfxMgrRef              _gfxMgr;
   int                    _poseID, _drawID;
 
   bool                      _guideOn;

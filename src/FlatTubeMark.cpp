@@ -11,7 +11,7 @@ namespace DrawOnAir {
 
   
 FlatTubeMark::FlatTubeMark(const std::string &name, 
-                           MinVR::GfxMgrRef gfxMgr,
+                           GfxMgrRef gfxMgr,
                            TriStripModelRef triStripModel) :
   Mark(name, true, false, gfxMgr)
 {
@@ -281,7 +281,7 @@ FlatTubeMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
     rd->setTextureCombineMode(0, RenderDevice::TEX_MODULATE);
     
     int smax = 1;
-    if (MinVR::getShadowsOn()) {
+    if (getShadowsOn()) {
       smax = 2;
     }
     for (int s=0;s<smax;s++) {  
@@ -306,7 +306,7 @@ FlatTubeMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
         }
       }
       else {
-        MinVR::pushShadowState(rd);
+        pushShadowState(rd);
       }
       
       // for each face of the tube
@@ -332,7 +332,7 @@ FlatTubeMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
       }
 
       if (s==1) {
-        MinVR::popShadowState(rd);
+        popShadowState(rd);
       }
     }
     rd->popState();

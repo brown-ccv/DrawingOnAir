@@ -15,8 +15,8 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-Brush::Brush(BrushStateRef brushState, ArtworkRef artwork, MinVR::GfxMgrRef gfxMgr
-  , MinVR::EventMgrRef eventMgr, HistoryRef history)
+Brush::Brush(BrushStateRef brushState, ArtworkRef artwork, GfxMgrRef gfxMgr
+  , EventMgrRef eventMgr, HistoryRef history)
 {
   state = brushState;
   _artwork = artwork;
@@ -27,7 +27,7 @@ Brush::Brush(BrushStateRef brushState, ArtworkRef artwork, MinVR::GfxMgrRef gfxM
   _slideTextureName = "";
   _fixedWidth = 0.0;
   
-  _nameChangeFsa = new MinVR::Fsa("Brush_MarkNameChange");
+  _nameChangeFsa = new Fsa("Brush_MarkNameChange");
   _nameChangeFsa->addState("Start");
   _nameChangeFsa->addArc("TextEnter", "Start", "Start", MinVR::splitStringIntoArray("TextInputWidget_Input"));
   _nameChangeFsa->addArcCallback("TextEnter", this, &Brush::updateNameText);

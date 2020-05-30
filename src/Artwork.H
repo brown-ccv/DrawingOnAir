@@ -26,7 +26,7 @@ typedef G3D::ReferenceCountedPointer<class Artwork> ArtworkRef;
 class Artwork : public G3D::ReferenceCountedObject
 { 
 public: 
-  Artwork(MinVR::GfxMgrRef gfxMgr);
+  Artwork(GfxMgrRef gfxMgr);
   virtual ~Artwork();
 
   void addMark(MarkRef mark);
@@ -83,7 +83,7 @@ private:
   Artwork(const Artwork &);
   Artwork& operator=(const Artwork &);
 
-  MinVR::GfxMgrRef          _gfxMgr;
+  GfxMgrRef          _gfxMgr;
   AnnotationModelRef _annotationModel;
   PointModelRef      _pointModel;
   TriStripModelRef   _triStripModel;

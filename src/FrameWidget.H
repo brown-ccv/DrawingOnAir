@@ -22,8 +22,8 @@ class FrameWidget : public PickerWidget
 {
 public:
   FrameWidget(ArtworkRef             artwork,
-    MinVR::GfxMgrRef              gfxMgr,
-    MinVR::EventMgrRef            eventMgr,
+    GfxMgrRef              gfxMgr,
+    EventMgrRef            eventMgr,
               //ForceNetInterface*     forceNetInterface,
               HCIMgrRef              hciMgr,
               BrushRef               brush,

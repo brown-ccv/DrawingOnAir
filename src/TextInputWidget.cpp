@@ -14,10 +14,10 @@ namespace DrawOnAir {
     without accidentally activating other Fsa's that respond to
     particular keyboard press events.
  */
-class KbdFilter : public MinVR::EventFilter
+class KbdFilter : public EventFilter
 {
 public:
-  KbdFilter(const std::string &newEventName, MinVR::EventMgrRef eventMgr) { 
+  KbdFilter(const std::string &newEventName, EventMgrRef eventMgr) { 
     _eName = newEventName; 
     _eventMgr = eventMgr;
   }
@@ -56,15 +56,15 @@ public:
   }
 
 private:
-  MinVR::EventMgrRef _eventMgr;
+  EventMgrRef _eventMgr;
   std::string _eName;
 };
 
 
 
 
-TextInputWidget::TextInputWidget(MinVR::GfxMgrRef              gfxMgr,
-                                 MinVR::EventMgrRef            eventMgr,
+TextInputWidget::TextInputWidget(GfxMgrRef              gfxMgr,
+                                 EventMgrRef            eventMgr,
                                  HCIMgrRef              hciMgr,
                                  Array<std::string>     enterEvents) :
   WidgetHCI(hciMgr)
@@ -73,7 +73,7 @@ TextInputWidget::TextInputWidget(MinVR::GfxMgrRef              gfxMgr,
   _eventMgr = eventMgr;
   _shouldDraw = false;
   
-  _fsa = new MinVR::Fsa("TextInputWidget");
+  _fsa = new Fsa("TextInputWidget");
   _fsa->addState("Start");
   _fsa->addArc("TextIn", "Start", "Start", MinVR::splitStringIntoArray("TextInput"));
   _fsa->addArcCallback("TextIn", this, &TextInputWidget::keyPressed);

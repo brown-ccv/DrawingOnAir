@@ -23,8 +23,8 @@ typedef G3D::ReferenceCountedPointer<class ReframeArtworkHCI> ReframeArtworkHCIR
 class ReframeArtworkHCI : public WidgetHCI
 {
 public:
-  ReframeArtworkHCI(MinVR::EventMgrRef            eventMgr,
-                    MinVR::GfxMgrRef              gfxMgr,
+  ReframeArtworkHCI(EventMgrRef            eventMgr,
+                    GfxMgrRef              gfxMgr,
                     HCIMgrRef              hciMgr,
                     CavePaintingCursorsRef cursors,
                     G3D::Array<std::string>     tracker1Triggers,
@@ -46,9 +46,9 @@ private:
   ReframeArtworkHCI(const ReframeArtworkHCI &);
   ReframeArtworkHCI& operator=(const ReframeArtworkHCI &);
 
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::FsaRef                 _fsa;
-  MinVR::GfxMgrRef              _gfxMgr;
+  EventMgrRef           _eventMgr;
+  FsaRef                 _fsa;
+  GfxMgrRef              _gfxMgr;
   CavePaintingCursorsRef _cursors;
   bool                   _initialGrab;
   G3D::CoordinateFrame        _lastFrame;

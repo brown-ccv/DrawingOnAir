@@ -24,7 +24,7 @@ class PointSplatMark : public Mark
 {
 public:
   PointSplatMark(const std::string &name, 
-                 MinVR::GfxMgrRef gfxMgr,
+                 GfxMgrRef gfxMgr,
                  PointModelRef pointModel);
 
   virtual ~PointSplatMark();

@@ -12,7 +12,7 @@ typedef G3D::ReferenceCountedPointer<class TriStripModel> TriStripModelRef;
 class TriStripModel : public G3D::PosedModel 
 {
 public:
-  TriStripModel(MinVR::GfxMgrRef gfxMgr);
+  TriStripModel(GfxMgrRef gfxMgr);
   virtual ~TriStripModel();
 
   /// Returns a sub-model ID number
@@ -74,7 +74,7 @@ protected:
 
   G3D::CoordinateFrame  _frame;
 
-  MinVR::GfxMgrRef        _gfxMgr;
+  GfxMgrRef        _gfxMgr;
   int              _numPointsThatFitInVarArea;
 
   G3D::Table<int, G3D::Array< int > > _modelIndices;

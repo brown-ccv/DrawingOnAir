@@ -20,8 +20,8 @@ class BrushModelPicker : public PickerWidget
 {
 public:
   BrushModelPicker(
-             MinVR::GfxMgrRef              gfxMgr,
-             MinVR::EventMgrRef            eventMgr,
+             GfxMgrRef              gfxMgr,
+             EventMgrRef            eventMgr,
              //ForceNetInterface*     forceNetInterface,
              HCIMgrRef              hciMgr,
              G3D::Array<std::string>     brushModelNames,

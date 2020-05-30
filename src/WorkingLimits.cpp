@@ -5,7 +5,7 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-WorkingLimits::WorkingLimits(AABox limits, double warningDist, BrushStateRef brushState, MinVR::GfxMgrRef gfxMgr)
+WorkingLimits::WorkingLimits(AABox limits, double warningDist, BrushStateRef brushState, GfxMgrRef gfxMgr)
 {
   _limits = limits;
   _warningDist = warningDist;

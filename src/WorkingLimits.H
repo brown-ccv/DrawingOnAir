@@ -22,7 +22,7 @@ typedef G3D::ReferenceCountedPointer<class WorkingLimits> WorkingLimitsRef;
 class WorkingLimits : public G3D::ReferenceCountedObject
 {
 public:
-  WorkingLimits(G3D::AABox limits, double warningDist, BrushStateRef brushState, MinVR::GfxMgrRef gfxMgr);
+  WorkingLimits(G3D::AABox limits, double warningDist, BrushStateRef brushState, GfxMgrRef gfxMgr);
   virtual ~WorkingLimits();
 
   void pose(G3D::Array<G3D::PosedModel::Ref>& posedModels, const G3D::CoordinateFrame& frame);

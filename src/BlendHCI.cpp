@@ -14,8 +14,8 @@ BlendHCI::BlendHCI(Array<std::string>     brushOnTriggers,
                    Array<std::string>     brushOffTriggers,
                    BrushRef          brush,
                    CavePaintingCursorsRef cursors,
-                   MinVR::EventMgrRef            eventMgr,
-                   MinVR::GfxMgrRef              gfxMgr)
+                   EventMgrRef            eventMgr,
+                   GfxMgrRef              gfxMgr)
 {
   _brush = brush;
   _cursors = cursors;
@@ -23,7 +23,7 @@ BlendHCI::BlendHCI(Array<std::string>     brushOnTriggers,
   _gfxMgr = gfxMgr;
   _enabled = false;
 
-  _fsa = new MinVR::Fsa("BlendHCI");
+  _fsa = new Fsa("BlendHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
   _fsa->addArc("BrushMove", "Start", "Start", brushMotionTriggers);

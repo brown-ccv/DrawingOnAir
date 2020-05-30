@@ -31,8 +31,8 @@ class ColorPicker : public WidgetHCI
 {
 public:
 
-  ColorPicker(MinVR::GfxMgrRef              gfxMgr,
-    MinVR::EventMgrRef            eventMgr,
+  ColorPicker(GfxMgrRef              gfxMgr,
+    EventMgrRef            eventMgr,
               HCIMgrRef              hciMgr,
               CavePaintingCursorsRef cursors,
               G3D::Array<std::string>     trackerEvents,
@@ -64,7 +64,7 @@ private:
 
   G3D::Vector3       _widgetCenterInRoom;
   G3D::Vector3       _trackerPos;
-  MinVR::FsaRef        _fsa;
+  FsaRef        _fsa;
   double        _startTime;
   double        _startFadeOutTime;
   std::string   _activeTracker;
@@ -76,8 +76,8 @@ private:
   double        CP_GEOM_RAD;
   double        CANCEL_GEOM_RAD;
 
-  MinVR::GfxMgrRef     _gfxMgr;
-  MinVR::EventMgrRef   _eventMgr;
+  GfxMgrRef     _gfxMgr;
+  EventMgrRef   _eventMgr;
 };
 
 

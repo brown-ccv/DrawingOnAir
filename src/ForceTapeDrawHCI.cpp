@@ -14,8 +14,8 @@ ForceTapeDrawHCI::ForceTapeDrawHCI(Array<std::string>     brushOnTriggers,
                                    BrushRef               brush,
                                    CavePaintingCursorsRef cursors,
                                    //ForceNetInterface*     forceNetInterface,
-                                   MinVR::EventMgrRef            eventMgr,
-  MinVR::GfxMgrRef              gfxMgr)
+                                   EventMgrRef            eventMgr,
+  GfxMgrRef              gfxMgr)
 {
   //_forceNetInterface = forceNetInterface;
   _brush = brush;
@@ -25,7 +25,7 @@ ForceTapeDrawHCI::ForceTapeDrawHCI(Array<std::string>     brushOnTriggers,
   _enabled = false;
   _redrawCutoff = -1;
 
-  _fsa = new MinVR::Fsa("ForceTapeDrawHCI");
+  _fsa = new Fsa("ForceTapeDrawHCI");
   _fsa->addState("Start");
   _fsa->addState("Drawing");
 

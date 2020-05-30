@@ -22,8 +22,8 @@ typedef G3D::ReferenceCountedPointer<class SlidePicker> SlidePickerRef;
 class SlidePicker : public PickerWidget
 {
 public:
-  SlidePicker(MinVR::GfxMgrRef              gfxMgr,
-    MinVR::EventMgrRef            eventMgr,
+  SlidePicker(GfxMgrRef              gfxMgr,
+    EventMgrRef            eventMgr,
               //ForceNetInterface*     forceNetInterface,
               HCIMgrRef              hciMgr,
               BrushRef               brush,
@@ -41,7 +41,7 @@ public:
   virtual void startWidget();
   virtual void closeWidget();
 
-  static void loadSlideImages(MinVR::GfxMgrRef gfxMgr, G3D::Array<std::string> &keyNames);
+  static void loadSlideImages(GfxMgrRef gfxMgr, G3D::Array<std::string> &keyNames);
 
 private:
   SlidePicker(const SlidePicker &);

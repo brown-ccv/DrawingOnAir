@@ -30,8 +30,8 @@ public:
                 G3D::Array<std::string>     handMotionTriggers, 
                 BrushRef               brush,
                 CavePaintingCursorsRef cursors,
-    MinVR::EventMgrRef            eventMgr,
-    MinVR::GfxMgrRef              gfxMgr);
+    EventMgrRef            eventMgr,
+    GfxMgrRef              gfxMgr);
   virtual ~PlaceSlideHCI();
 
   void setEnabled(bool b);
@@ -51,9 +51,9 @@ public:
 protected:
   BrushRef               _brush;
   CavePaintingCursorsRef _cursors;
-  MinVR::EventMgrRef            _eventMgr;
-  MinVR::GfxMgrRef              _gfxMgr;
-  MinVR::FsaRef                 _fsa;
+  EventMgrRef            _eventMgr;
+  GfxMgrRef              _gfxMgr;
+  FsaRef                 _fsa;
   bool                   _enabled;
   int                    _dcbid;
   std::string            _slideName;

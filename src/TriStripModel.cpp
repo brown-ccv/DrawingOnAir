@@ -6,7 +6,7 @@ using namespace G3D;
 namespace DrawOnAir {
 
 
-TriStripModel::TriStripModel(MinVR::GfxMgrRef gfxMgr)
+TriStripModel::TriStripModel(GfxMgrRef gfxMgr)
 {
   _gfxMgr = gfxMgr;
   _nextModelID = 0;
@@ -194,7 +194,7 @@ TriStripModel::render(RenderDevice* rd) const
 
   // 2 passes: 1st does normal rendering, 2nd does shadows
   int smax = 1;
-  if (MinVR::getShadowsOn()) {
+  if (getShadowsOn()) {
     smax = 2;
   }
   for (int s=0;s<smax;s++) {
@@ -220,7 +220,7 @@ TriStripModel::render(RenderDevice* rd) const
       }
     }
     else {
-      MinVR::pushShadowState(rd);
+      pushShadowState(rd);
     }
        
     rd->beginIndexedPrimitives();
@@ -269,7 +269,7 @@ TriStripModel::render(RenderDevice* rd) const
     
 
     if (s==1) {
-      MinVR::popShadowState(rd);
+      popShadowState(rd);
     }
     
     rd->popState();    

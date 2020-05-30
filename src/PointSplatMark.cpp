@@ -9,7 +9,7 @@ using namespace G3D;
 namespace DrawOnAir {
 
   
-  PointSplatMark::PointSplatMark(const std::string &name, MinVR::GfxMgrRef gfxMgr, PointModelRef pointModel) : 
+  PointSplatMark::PointSplatMark(const std::string &name, GfxMgrRef gfxMgr, PointModelRef pointModel) : 
   Mark(name, false, true, gfxMgr)
 {
   _pointModel = pointModel;

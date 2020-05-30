@@ -22,7 +22,7 @@ typedef G3D::ReferenceCountedPointer<class AnnotationModel> AnnotationModelRef;
 class AnnotationModel : public G3D::ReferenceCountedObject
 {
 public:
-  AnnotationModel(MinVR::GfxMgrRef gfxMgr);
+  AnnotationModel(GfxMgrRef gfxMgr);
   virtual ~AnnotationModel();
 
   /// Returns annotation ID number
@@ -47,7 +47,7 @@ private:
   AnnotationModel(const AnnotationModel &);
   AnnotationModel& operator=(const AnnotationModel &);
 
-  MinVR::GfxMgrRef                 _gfxMgr;
+  GfxMgrRef                 _gfxMgr;
   int                       _nextID;
   double                    _screenSize;
   double                    _constSize;

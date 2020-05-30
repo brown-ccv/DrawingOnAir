@@ -8,7 +8,7 @@ using namespace G3D;
 
 namespace DrawOnAir {
 
-History::History(MinVR::EventMgrRef eventMgr, MinVR::GfxMgrRef gfxMgr)
+History::History(EventMgrRef eventMgr, GfxMgrRef gfxMgr)
 {
   _eventMgr = eventMgr;
   _gfxMgr = gfxMgr;

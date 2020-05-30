@@ -19,8 +19,8 @@ typedef G3D::ReferenceCountedPointer<class BrushTipPicker> BrushTipPickerRef;
 class BrushTipPicker : public PickerWidget
 {
 public:
-  BrushTipPicker(MinVR::GfxMgrRef              gfxMgr,
-                 MinVR::EventMgrRef            eventMgr,
+  BrushTipPicker(GfxMgrRef              gfxMgr,
+                 EventMgrRef            eventMgr,
                  //ForceNetInterface*     forceNetInterface,
                  HCIMgrRef              hciMgr,
                  BrushRef          brush,

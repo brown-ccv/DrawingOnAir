@@ -13,7 +13,7 @@ namespace DrawOnAir {
 
   
 RibbonMark::RibbonMark(const std::string &name, 
-  MinVR::GfxMgrRef gfxMgr,
+  GfxMgrRef gfxMgr,
                        TriStripModelRef triStripModel) :
   Mark(name, true, false, gfxMgr) 
 {
@@ -216,7 +216,7 @@ RibbonMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
     rd->setObjectToWorldMatrix(frame);
 
     int smax = 1;
-    if (MinVR::getShadowsOn()) {
+    if (getShadowsOn()) {
       smax = 2;
     }
     for (int s=0;s<smax;s++) {
@@ -244,7 +244,7 @@ RibbonMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
         }
       }
       else {
-        MinVR::pushShadowState(rd);
+        pushShadowState(rd);
       }
 
  
@@ -268,7 +268,7 @@ RibbonMark::draw(RenderDevice *rd, const CoordinateFrame& frame)
       rd->endPrimitive();
 
       if (s==1) {
-        MinVR::popShadowState(rd);
+        popShadowState(rd);
       }
     }
     rd->popState();

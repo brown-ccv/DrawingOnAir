@@ -6,7 +6,7 @@ using namespace G3D;
 
 namespace DrawOnAir {
 
-AnnotationModel::AnnotationModel(MinVR::GfxMgrRef gfxMgr)
+AnnotationModel::AnnotationModel(GfxMgrRef gfxMgr)
 {
   _gfxMgr = gfxMgr;
   _nextID = 0;

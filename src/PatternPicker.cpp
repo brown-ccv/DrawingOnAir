@@ -4,8 +4,8 @@ using namespace G3D;
 namespace DrawOnAir {
 
   
-PatternPicker::PatternPicker(MinVR::GfxMgrRef              gfxMgr,
-                             MinVR::EventMgrRef            eventMgr,
+PatternPicker::PatternPicker(GfxMgrRef              gfxMgr,
+                             EventMgrRef            eventMgr,
                              //ForceNetInterface*     forceNetInterface,
                              HCIMgrRef              hciMgr,
                              BrushRef               brush,
