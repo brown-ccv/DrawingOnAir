@@ -1,12 +1,19 @@
-# Author: Daniel F. Keefe
-# Copyright 2017,2018, Daniel F. Keefe and Regents of the University of Minnesota
+# Author: Camilo D
+# Copyright 2020 Camilo D and Regents of Brown Univeristy
 # All Rights Reserved.
 
 include(AutoBuild)
 
+AutoBuild_init()
+
+# Folllowing the example of GLFW autobuild cmake script
+#
+
+
+
 
 # Usage:
-# AutoBuild_use_package_GLEW(
+# AutoBuild_use_package_G3D(
 #    # The 1st argument is required.  It is the name of the target you wish to link this dependency to.
 #    my-program 
 #
@@ -25,22 +32,27 @@ macro(AutoBuild_use_package_VRG3DBase YOUR_TARGET INTERFACE_PUBLIC_OR_PRIVATE)
         if ("${AUTOBUILD_EXECUTE_NOW}")
 
             message(STATUS "AutoBuild: Beginning download, build, install sequence.")
-
-            AutoBuild_download_project( 
+            if (EXISTS "${AUTOBUILD_DOWNLOAD_DIR}/${PACKAGE_NAME}/CmakeLists.txt")
+			     message(STATUS "AutoBuild: External project source found at ${AUTOBUILD_DOWNLOAD_DIR}/${PACKAGE_NAME}. Skipping download step.")
+            else()
+                AutoBuild_download_project( 
                   ${PACKAGE_NAME}
                  GIT_REPOSITORY https://github.com/brown-ccv/VRG3DBase.git
-            )
+                )
+            endif()
 
             AutoBuild_build_and_install_project(
-                 ${PACKAGE_NAME}
+                ${PACKAGE_NAME}
                 .
 				-DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
+				-DMinVR_DIR=${MinVR_DIR}
             )
-
+			
             AutoBuild_find_built_package_module_mode(${PACKAGE_NAME})
 
             set(${PACKAGE_NAME_UPPER}_AUTOBUILT "TRUE" CACHE BOOL "Confirms that package ${PACKAGE_NAME} was successfully built by the AutoBuild system.")
             mark_as_advanced(${PACKAGE_NAME}_AUTOBUILT)
+			
 
         else()
             message(STATUS "AutoBuild: Scheduled to build ${PACKAGE_NAME} the next time CMake Configure is run.")
@@ -52,13 +64,24 @@ macro(AutoBuild_use_package_VRG3DBase YOUR_TARGET INTERFACE_PUBLIC_OR_PRIVATE)
     if ("${${PACKAGE_NAME}_FOUND}" OR "${${PACKAGE_NAME_UPPER}_FOUND}")
         message(STATUS "Linking target ${YOUR_TARGET} with ${INTERFACE_PUBLIC_OR_PRIVATE} dependency ${PACKAGE_NAME}.")
 
-        if (TARGET GLEW::GLEW)
-            # No need to set include dirs; this uses the modern cmake imported targets, so they are set automatically
-            target_link_libraries(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} GLEW::GLEW)
-        else()
-            # If we found an old version of glew that doesn't provide the GLEW::GLEW imported target, this should work instead
-            target_link_libraries(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} ${GLEW_LIBRARIES})
-            target_include_directories(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} ${GLEW_INCLUDE_DIR})
+        target_include_directories(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} ${VRG3DBase_INCLUDE_DIR})
+		message(error ${VRG3DBase_INCLUDE_DIR})
+        target_link_libraries(${YOUR_TARGET} 
+            ${INTERFACE_PUBLIC_OR_PRIVATE} optimized ${VRG3DBase_LIBRARY}
+            ${INTERFACE_PUBLIC_OR_PRIVATE} debug ${VRG3DBase_DEBUG_LIBRARY}
+        )
+
+        if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+            find_package(Threads)
+            find_package(X11)
+            target_link_libraries(${YOUR_TARGET} 
+                ${INTERFACE_PUBLIC_OR_PRIVATE} rt
+                ${INTERFACE_PUBLIC_OR_PRIVATE} Xrandr
+                ${INTERFACE_PUBLIC_OR_PRIVATE} Xxf86vm
+                ${INTERFACE_PUBLIC_OR_PRIVATE} Xi
+                ${INTERFACE_PUBLIC_OR_PRIVATE} m
+                ${INTERFACE_PUBLIC_OR_PRIVATE} ${X11_LIBRARIES}
+            )
         endif()
 
         target_compile_definitions(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} -DUSE_${PACKAGE_NAME})
