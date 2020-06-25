@@ -11,7 +11,7 @@
 #define BLENDHCI_H
 
 //#include "VRBase.H"
-#include <Event.h>
+#include <VRG3DEvent.h>
 #include <EventMgr.H>
 
 #include "Brush.H"

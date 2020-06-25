@@ -6,7 +6,7 @@
  *
  */
 
-#include <Event.h>
+#include <VRG3DEvent.h>
 #ifndef FORCEONEHANDDRAWHCI_H
 #define FORCEONEHANDDRAWHCI_H
 

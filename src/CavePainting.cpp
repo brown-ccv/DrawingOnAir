@@ -957,13 +957,13 @@ CavePainting::previousFrame(MinVR::EventRef e)
 void
 CavePainting::kbdPressureUp(MinVR::EventRef e)
 {
-  _eventMgr->queueEvent(new MinVR::Event("Brush_Pressure", _brush->state->pressure + 0.1));
+  _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Pressure", _brush->state->pressure + 0.1));
 }
 
 void
 CavePainting::kbdPressureDown(MinVR::EventRef e)
 {
-  _eventMgr->queueEvent(new MinVR::Event("Brush_Pressure", _brush->state->pressure - 0.1));
+  _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Pressure", _brush->state->pressure - 0.1));
 }
 
 void
@@ -981,14 +981,14 @@ CavePainting::brushPressureDeviceUpdate(MinVR::EventRef e)
 
   cout << "pressure -- raw:" << e->get1DData() << " value: " << pressure << endl;
 
-  _eventMgr->queueEvent(new MinVR::Event("Brush_Pressure", pressure));
+  _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Pressure", pressure));
 
   if ((!_pressureBtnPressed) && (e->get1DData() > min)) {
-    _eventMgr->queueEvent(new MinVR::Event("Brush_Btn_down"));
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Btn_down"));
     _pressureBtnPressed = true;
   }
   else if ((_pressureBtnPressed) && (e->get1DData() < min)) {
-    _eventMgr->queueEvent(new MinVR::Event("Brush_Btn_up"));
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Btn_up"));
     _pressureBtnPressed = false;
   }
 }

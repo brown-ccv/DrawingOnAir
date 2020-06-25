@@ -42,10 +42,10 @@ public:
         }
         
         if (e->getName().find("SHIFT") != e->getName().npos) {
-          _eventMgr->queueEvent(new MinVR::Event(_eName, key));
+          _eventMgr->queueEvent(new MinVR::VRG3DEvent(_eName, key));
         }
         else {
-          _eventMgr->queueEvent(new MinVR::Event(_eName, toLower(key)));
+          _eventMgr->queueEvent(new MinVR::VRG3DEvent(_eName, toLower(key)));
         }
       }
       return false;
@@ -181,23 +181,23 @@ TextInputWidget::keyPressed(MinVR::EventRef e)
 {
   std::string key = e->getMsgData();
   if ((key == "ENTER") || (key == "enter")) {
-    _eventMgr->queueEvent(new MinVR::Event("TextInputWidget_InputDone", _text));
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("TextInputWidget_InputDone", _text));
     deactivate();
   }
   else if ((key == "BACKSPACE") || (key == "backspace")) {
     _text = _text.substr(0, _text.length()-1);
-    _eventMgr->queueEvent(new MinVR::Event("TextInputWidget_Input", _text));
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("TextInputWidget_Input", _text));
   }
   else if ((key != "UNKNOWN") && (key != "unknown")) {
     _text = _text + key;
-    _eventMgr->queueEvent(new MinVR::Event("TextInputWidget_Input", _text));
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("TextInputWidget_Input", _text));
   }
 }
 
 void
 TextInputWidget::enterText(MinVR::EventRef e)
 {
-  _eventMgr->queueEvent(new MinVR::Event("TextInputWidget_InputDone", _text));
+  _eventMgr->queueEvent(new MinVR::VRG3DEvent("TextInputWidget_InputDone", _text));
   deactivate();
 }
 

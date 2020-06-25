@@ -69,7 +69,7 @@ void
 LoadFilePicker::selectionMade(int itemNum)
 {
   // responded to by main cavepainting class
-  _eventMgr->queueEvent(new MinVR::Event("LoadFile", _fileNames[itemNum]));
+  _eventMgr->queueEvent(new MinVR::VRG3DEvent("LoadFile", _fileNames[itemNum]));
 }
 
 } // end namespace

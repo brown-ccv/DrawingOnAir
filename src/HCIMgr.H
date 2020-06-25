@@ -11,7 +11,7 @@
 
 //#include "VRBase.H"
 #include <EventMgr.H>
-#include <Event.h>
+#include <VRG3DEvent.h>
 
 namespace DrawOnAir {
 

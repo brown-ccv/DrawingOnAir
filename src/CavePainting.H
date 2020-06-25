@@ -11,7 +11,7 @@
 #define CAVEPAINTING_H
 
 #include <VRG3DBaseApp.h>
-#include <Event.h>
+#include <VRG3DEvent.h>
 #include <Fsa.H>
 #include <SMesh.H>
 

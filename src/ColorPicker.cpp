@@ -70,12 +70,12 @@ ColorPicker::trackerMoved(MinVR::EventRef e)
   if (e->getName() == _activeTracker) {
     _trackerPos = e->getCoordinateFrameData().translation;
     if (outsideCancelSphere()) {
-      _eventMgr->queueEvent(new MinVR::Event("ColorPicker_ColorModified",
+      _eventMgr->queueEvent(new MinVR::VRG3DEvent("ColorPicker_ColorModified",
           Vector3(_initialColor[0],_initialColor[1],_initialColor[2])));
     }
     else {
       Color3 c = pointToColor(_trackerPos - _widgetCenterInRoom);
-      _eventMgr->queueEvent(new MinVR::Event("ColorPicker_ColorModified",
+      _eventMgr->queueEvent(new MinVR::VRG3DEvent("ColorPicker_ColorModified",
                                    Vector3(c[0], c[1], c[2])));
     }
   }
@@ -85,13 +85,13 @@ void
 ColorPicker::pickBtnPressed(MinVR::EventRef e)
 {
   if (outsideCancelSphere()) {
-    _eventMgr->queueEvent(new MinVR::Event("ColorPicker_ColorModified",
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("ColorPicker_ColorModified",
       Vector3(_initialColor[0],_initialColor[1],_initialColor[2])));
-    _eventMgr->queueEvent(new MinVR::Event("ColorPicker_Cancel"));
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("ColorPicker_Cancel"));
   }
   else {
     Color3 c = pointToColor(_trackerPos - _widgetCenterInRoom);
-    _eventMgr->queueEvent(new MinVR::Event("ColorPicker_ColorSelected",
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("ColorPicker_ColorSelected",
                                  Vector3(c[0], c[1], c[2])));
   }
   _startFadeOutTime = MinVR::SynchedSystem::getLocalTime();

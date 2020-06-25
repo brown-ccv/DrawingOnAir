@@ -5,7 +5,7 @@
 using namespace G3D;
 namespace DrawOnAir {
 
-MoveMarksHCI::MoveMarksHCI(Array<std::string>     motionTriggers, 
+MoveMarksHCI::MoveMarksHCI(Array<std::string>     motionTriggers,
                            Array<std::string>     onTriggers,
                            Array<std::string>     offTriggers,
                            ArtworkRef             artwork,

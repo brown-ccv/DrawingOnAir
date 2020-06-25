@@ -221,7 +221,7 @@ MarkingMenu::clickOff(MinVR::EventRef e)
   int selection = _highlighted;
   deactivate();
   if (selection > 0) {
-    _eventMgr->processEvent(new MinVR::Event(_eventNames[selection]));
+    _eventMgr->processEvent(new MinVR::VRG3DEvent(_eventNames[selection]));
   }
 }
 

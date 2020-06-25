@@ -64,8 +64,8 @@ macro(AutoBuild_use_package_VRG3DBase YOUR_TARGET INTERFACE_PUBLIC_OR_PRIVATE)
     if ("${${PACKAGE_NAME}_FOUND}" OR "${${PACKAGE_NAME_UPPER}_FOUND}")
         message(STATUS "Linking target ${YOUR_TARGET} with ${INTERFACE_PUBLIC_OR_PRIVATE} dependency ${PACKAGE_NAME}.")
 
-        target_include_directories(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} ${VRG3DBase_INCLUDE_DIR})
-		message(error ${VRG3DBase_INCLUDE_DIR})
+        target_include_directories(${YOUR_TARGET} ${INTERFACE_PUBLIC_OR_PRIVATE} $<BUILD_INTERFACE:${VRG3DBase_INCLUDE_DIR}>)
+		
         target_link_libraries(${YOUR_TARGET} 
             ${INTERFACE_PUBLIC_OR_PRIVATE} optimized ${VRG3DBase_LIBRARY}
             ${INTERFACE_PUBLIC_OR_PRIVATE} debug ${VRG3DBase_DEBUG_LIBRARY}
