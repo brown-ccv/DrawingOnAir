@@ -75,7 +75,8 @@ public:
   virtual void doGraphics(G3D::RenderDevice *rd);
   void onRenderGraphicsScene(const MinVR::VRGraphicsState& state);
   // Callback methods that respond to Menu events, button presses, etc..
- 
+  void onAnalogChange(const MinVR::VRAnalogEvent &event);
+
   void activateReframeArtwork(MinVR::EventRef e);  
   void activateBlending(MinVR::EventRef e);
   void activateBrushModelPicker(MinVR::EventRef e);

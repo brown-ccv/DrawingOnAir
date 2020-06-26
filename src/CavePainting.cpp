@@ -1238,6 +1238,40 @@ void CavePainting::onRenderGraphicsScene(const MinVR::VRGraphicsState& state)
   doGraphics(myRenderDevice);
 }
 
+
+void CavePainting::onAnalogChange(const MinVR::VRAnalogEvent &event)
+{
+
+  if (event.getName().find("HTC_Controller_1_Trigger1") != -1
+    || event.getName().find("HTC_Controller_Right_Trigger1") != -1)
+  {
+
+    //double min = MinVR::ConfigVal("Pressure_Min", 0.05, false);
+    //double max = MinVR::ConfigVal("Pressure_Max", 1.0, false);
+    //double evalue = event.getValue();
+    //double pressure = clamp((evalue - min) / (max - min), 0.0, 1.0);
+    // rescale so that the minimum pressure is > 0 so we get a mark of
+    // non-zero width all the time.
+    //pressure = (pressure + 0.1) / 1.1;
+    
+    _eventMgr->queueEvent(new MinVR::VRG3DEvent("My_Brush_Pressure", event.getValue()));
+
+    //brushPressureDeviceUpdate(new MinVR::VRG3DEvent("", event.getValue()));
+    
+    /*
+    if ((!_pressureBtnPressed) && (evalue > min)) {
+      _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Btn_down"));
+      _pressureBtnPressed = true;
+    }
+    else if ((_pressureBtnPressed) && (evalue < min)) {
+      _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Btn_up"));
+      _pressureBtnPressed = false;
+    }
+    */
+  }
+  _eventMgr->processEventQueue();
+}
+
 void
 CavePainting::modelDraw(RenderDevice *rd, const CoordinateFrame &virtualToRoomSpace)
 {
