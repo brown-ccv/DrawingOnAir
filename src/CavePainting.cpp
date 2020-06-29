@@ -133,29 +133,29 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
       //_hciMgr->activateStylusHCI(_forceHybridDrawHCI);
     }
 
-    //_forceBlendHCI = new ForceBlendHCI(brushOn, brushMotion, brushOff, handMotion, _brush, _cavePaintingCursors, _forceNetInterface, _eventMgr, _gfxMgr);
+    _forceBlendHCI = new ForceBlendHCI(brushOn, brushMotion, brushOff, handMotion, _brush, _cavePaintingCursors,  _eventMgr, _gfxMgr);
     _forceBlendHCI = new ForceBlendHCI(brushOn, brushMotion, brushOff, handMotion, _brush, _cavePaintingCursors, _eventMgr, _gfxMgr);
 
     // Widget Interactions
     Array<std::string> bModelNames = MinVR::splitStringIntoArray(MinVR::ConfigVal("BrushModelNames", ""));
-    //_brushModelPicker  = new BrushModelPicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, bModelNames, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
-    //_brushSizePicker   = new BrushSizePicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, ConfigVal("MinBrushWidth", 0.01), ConfigVal("MaxBrushWidth", 0.1), 25);
-    //_brushTipPicker    = new BrushTipPicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, handOn);
-    //_colorPicker       = new ColorPicker(_gfxMgr, _eventMgr, _hciMgr, _cavePaintingCursors, brushMotion, brushOn);
-    //_colorSwatchPicker = new ColorSwatchPicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _cavePaintingCursors, _brush, brushOn, brushMotion, brushOff, handOn, CoordinateFrame());
-    //_loadFilePicker    = new LoadFilePicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
+    _brushModelPicker  = new BrushModelPicker(_gfxMgr, _eventMgr, _hciMgr, bModelNames, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
+    _brushSizePicker   = new BrushSizePicker(_gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, MinVR::ConfigVal("MinBrushWidth", 0.01), MinVR::ConfigVal("MaxBrushWidth", 0.1), 25);
+    _brushTipPicker    = new BrushTipPicker(_gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, handOn);
+    _colorPicker       = new ColorPicker(_gfxMgr, _eventMgr, _hciMgr, _cavePaintingCursors, brushMotion, brushOn);
+    _colorSwatchPicker = new ColorSwatchPicker(_gfxMgr, _eventMgr, _hciMgr, _cavePaintingCursors, _brush, brushOn, brushMotion, brushOff, handOn, CoordinateFrame());
+    _loadFilePicker    = new LoadFilePicker(_gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
     Array<std::string> markNames = MinVR::splitStringIntoArray(MinVR::ConfigVal("MarkNames", ""));
-    //_markPicker        = new MarkPicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, markNames, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
-    //_patternPicker     = new PatternPicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, handOn);
-    //_slidePicker       = new SlidePicker(_gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, _placeSlideHCI);
-    //_reframeArtworkHCI = new ReframeArtworkHCI(_eventMgr, _gfxMgr, _hciMgr, _cavePaintingCursors, handMotion, handOff, brushOn, brushMotion, brushOff);
-    //_kbdSelectWidget   = new KbdSelectWidget(_artwork, _eventMgr, _hciMgr);  
-   // _layerWidget       = new LayerWidget(_artwork, _gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
-    //_hciMgr->addPointerActivatedWidget(_layerWidget);
-    //_frameWidget       = new FrameWidget(_artwork, _gfxMgr, _eventMgr, _forceNetInterface, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
-    //_hciMgr->addPointerActivatedWidget(_frameWidget);
-   // _textInputWidget   = new TextInputWidget(_gfxMgr, _eventMgr, _hciMgr, brushOn);
-    //_brush->setTextInputWidget(_textInputWidget);
+    _markPicker        = new MarkPicker(_gfxMgr, _eventMgr, _hciMgr, markNames, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
+    _patternPicker     = new PatternPicker(_gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, handOn);
+    _slidePicker       = new SlidePicker(_gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff, _placeSlideHCI);
+    _reframeArtworkHCI = new ReframeArtworkHCI(_eventMgr, _gfxMgr, _hciMgr, _cavePaintingCursors, handMotion, handOff, brushOn, brushMotion, brushOff);
+    _kbdSelectWidget   = new KbdSelectWidget(_artwork, _eventMgr, _hciMgr);  
+    _layerWidget       = new LayerWidget(_artwork, _gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
+    _hciMgr->addPointerActivatedWidget(_layerWidget);
+    _frameWidget       = new FrameWidget(_artwork, _gfxMgr, _eventMgr, _hciMgr, _brush, _cavePaintingCursors, brushOn, brushMotion, brushOff);
+    _hciMgr->addPointerActivatedWidget(_frameWidget);
+    _textInputWidget   = new TextInputWidget(_gfxMgr, _eventMgr, _hciMgr, brushOn);
+    _brush->setTextInputWidget(_textInputWidget);
 
     _modeMenu = new MarkingMenu(
         _gfxMgr, _eventMgr, _hciMgr, 
