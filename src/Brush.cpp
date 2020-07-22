@@ -166,10 +166,10 @@ Brush::endMark()
   }
 
 #ifdef USE_SPLINES
-  if (ConfigVal("TestSplineFit", false, false)) {
+  if (MinVR::ConfigVal("TestSplineFit", false, false)) {
     Array<Vector3> ctrlPoints;
     Array<Vector3> segPoints;
-    double samplen = ConfigVal("SplineResampleLength", 0.001, false);
+    double samplen = MinVR::ConfigVal("SplineResampleLength", 0.001, false);
     MarkRef splineMark = SplineFit(currentMark, samplen, ctrlPoints, segPoints, 
                                    _artwork->getTriStripModel(), _gfxMgr);
     _artwork->addMark(splineMark);

@@ -979,7 +979,6 @@ CavePainting::brushPressureDeviceUpdate(MinVR::EventRef e)
   // non-zero width all the time.
   pressure = (pressure + 0.1) / 1.1;
 
-  cout << "pressure -- raw:" << e->get1DData() << " value: " << pressure << endl;
 
   _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Pressure", pressure));
 
@@ -1035,14 +1034,14 @@ CavePainting::loadArtworkFile(const std::string &artworkToLoad)
   }
 
 #ifdef USE_SPLINES
-  if (ConfigVal("TestSplineFit", false, false)) {
+  if (MinVR::ConfigVal("TestSplineFit", false, false)) {
 
     Array<MarkRef> marks = _artwork->getMarks();
     for (int i=marks.size()-1;i<marks.size();i++) {
       MarkRef m = marks[i];
       Array<Vector3> ctrlPoints;
       Array<Vector3> segPoints;
-      double samplen = ConfigVal("SplineResampleLength", 0.001, false);
+      double samplen = MinVR::ConfigVal("SplineResampleLength", 0.001, false);
       MarkRef splineMark = SplineFit(m, samplen, ctrlPoints, segPoints, 
                                      _artwork->getTriStripModel(), _gfxMgr);
       _artwork->addMark(splineMark);
@@ -1245,31 +1244,12 @@ void CavePainting::onAnalogChange(const MinVR::VRAnalogEvent &event)
   if (event.getName().find("HTC_Controller_1_Trigger1") != -1
     || event.getName().find("HTC_Controller_Right_Trigger1") != -1)
   {
-
-    //double min = MinVR::ConfigVal("Pressure_Min", 0.05, false);
-    //double max = MinVR::ConfigVal("Pressure_Max", 1.0, false);
-    //double evalue = event.getValue();
-    //double pressure = clamp((evalue - min) / (max - min), 0.0, 1.0);
-    // rescale so that the minimum pressure is > 0 so we get a mark of
-    // non-zero width all the time.
-    //pressure = (pressure + 0.1) / 1.1;
     
     _eventMgr->queueEvent(new MinVR::VRG3DEvent("My_Brush_Pressure", event.getValue()));
-
-    //brushPressureDeviceUpdate(new MinVR::VRG3DEvent("", event.getValue()));
-    
-    /*
-    if ((!_pressureBtnPressed) && (evalue > min)) {
-      _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Btn_down"));
-      _pressureBtnPressed = true;
-    }
-    else if ((_pressureBtnPressed) && (evalue < min)) {
-      _eventMgr->queueEvent(new MinVR::VRG3DEvent("Brush_Btn_up"));
-      _pressureBtnPressed = false;
-    }
-    */
+ 
   }
   _eventMgr->processEventQueue();
+  _gfxMgr->poseFrame();
 }
 
 void
