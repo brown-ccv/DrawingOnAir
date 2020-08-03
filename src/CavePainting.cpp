@@ -1233,6 +1233,10 @@ CavePainting::doGraphics(RenderDevice *rd)
 
 void CavePainting::onRenderGraphicsScene(const MinVR::VRGraphicsState& state)
 {
+  
+  glClearColor(_clearColor[0], _clearColor[1], _clearColor[2], _clearColor[3]);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  
   VRG3DBaseApp::onRenderGraphicsScene(state);
   doGraphics(myRenderDevice);
 }
