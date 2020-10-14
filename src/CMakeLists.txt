@@ -163,6 +163,7 @@ target_include_directories(DrawingOnAir PUBLIC
 
 find_package(MinVR REQUIRED)
 target_link_libraries(DrawingOnAir PUBLIC MinVR::MinVR MinVR::MinVR_G3D)
+add_definitions(-DG3D_NO_FFMPEG)
 
 include(AutoBuildVRG3DBase)
 AutoBuild_use_package_VRG3DBase(DrawingOnAir PUBLIC)
