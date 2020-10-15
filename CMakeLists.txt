@@ -175,6 +175,7 @@ endif()
 # Windows specific
 if (WIN32)
   add_definitions(-DWIN32)
+  add_definitions(-DG3D_NO_FFMPEG)
 endif()
 
 

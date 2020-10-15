@@ -18,6 +18,10 @@ set (CONFIGFILES
 add_executable(${PROJECT_NAME} ${HEADERFILES} ${SOURCEFILES})
 
 
+
+add_definitions(-DG3D_NO_FFMPEG)
+
+
 # Add dependency on libDrawingOnAir:
 target_include_directories(${PROJECT_NAME} PUBLIC ../../src)
 target_link_libraries(${PROJECT_NAME} PUBLIC DrawingOnAir)
