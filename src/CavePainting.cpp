@@ -1242,19 +1242,19 @@ void CavePainting::onRenderGraphicsScene(const MinVR::VRGraphicsState& state)
 }
 
 
-void CavePainting::onAnalogChange(const MinVR::VRAnalogEvent &event)
-{
-
-  if (event.getName().find("HTC_Controller_1_Trigger1") != -1
-    || event.getName().find("HTC_Controller_Right_Trigger1") != -1)
-  {
-    
-    _eventMgr->queueEvent(new MinVR::VRG3DEvent("My_Brush_Pressure", event.getValue()));
- 
-  }
-  _eventMgr->processEventQueue();
-  _gfxMgr->poseFrame();
-}
+//void CavePainting::onAnalogChange(const MinVR::VRAnalogEvent &event)
+//{
+//
+//  if (event.getName().find("HTC_Controller_1_Trigger1") != -1
+//    || event.getName().find("HTC_Controller_Right_Trigger1") != -1)
+//  {
+//    
+//    _eventMgr->queueEvent(new MinVR::VRG3DEvent("My_Brush_Pressure", event.getValue()));
+// 
+//  }
+//  _eventMgr->processEventQueue();
+//  _gfxMgr->poseFrame();
+//}
 
 void
 CavePainting::modelDraw(RenderDevice *rd, const CoordinateFrame &virtualToRoomSpace)
