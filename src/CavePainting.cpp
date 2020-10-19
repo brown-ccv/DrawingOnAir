@@ -584,6 +584,7 @@ CavePainting::activateHybridDrawing(MinVR::EventRef e)
   else {
     _hciMgr->activateStylusHCI(_hybridDrawHCI);
   }*/
+  _hciMgr->activateStylusHCI(_hybridDrawHCI);
 }
 
 void
@@ -597,6 +598,7 @@ CavePainting::activateTapeDrawing(MinVR::EventRef e)
   else {
     _hciMgr->activateStylusHCI(_tapeDrawHCI);
   }*/
+  _hciMgr->activateStylusHCI(_tapeDrawHCI);
 }
 
 
@@ -612,6 +614,7 @@ CavePainting::activateFreehandDrawing(MinVR::EventRef e)
   else {
     _hciMgr->activateStylusHCI(_directDrawHCI);
   }*/
+  _hciMgr->activateStylusHCI(_directDrawHCI);
 }
 
 void
@@ -627,6 +630,7 @@ CavePainting::activateFreehandNoFrictionDrawing(MinVR::EventRef e)
   else {
     _hciMgr->activateStylusHCI(_directDrawHCI);
   }*/
+  _hciMgr->activateStylusHCI(_directDrawHCI);
 }
 
 void
