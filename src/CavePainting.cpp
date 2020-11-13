@@ -118,6 +118,10 @@ CavePainting::CavePainting(int argc, char **argv) : VRG3DBaseApp(argc, argv)
     _hybridDrawHCI = new HybridDrawHCI(brushOn, brushMotion, brushOff, handMotion, handOn, handOff, _brush, _cavePaintingCursors, _eventMgr, _gfxMgr);
     _tapeDrawHCI = new TapeDrawHCI(brushOn, brushMotion, brushOff, handMotion, _brush, _cavePaintingCursors, _eventMgr, _gfxMgr);
     _reverseTapeDrawHCI = new ReverseTapeDrawHCI(brushOn, brushMotion, brushOff, handMotion, _brush, _cavePaintingCursors, _eventMgr, _gfxMgr);
+#ifdef WITH_PHOTON
+	_photonInterface = new PhotonInterface(_artwork, _eventMgr, _history);
+#endif
+	
     _hciMgr->activateStylusHCI(_hybridDrawHCI);
 
     if (MinVR::ConfigVal("UseForceDrawing", false, false)) {

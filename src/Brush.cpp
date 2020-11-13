@@ -183,6 +183,20 @@ Brush::endMark()
   if (_newMarkType == 8) {
     startNameInput(currentMark);
   }
+
+#ifdef WITH_PHOTON
+  G3D::BinaryOutput b;
+  b.setEndian(G3DEndian::G3D_LITTLE_ENDIAN);
+  b.writeString(currentMark->markDescription());
+  currentMark->serialize(b);
+  //b.compress();
+
+  char* data_ptr = (char*) b.getCArray();
+  std::string str;
+  str.assign(data_ptr,b.size());
+  _eventMgr->addEvent("NewMark", str);
+#endif
+
   currentMark = NULL;
 }
 
@@ -191,8 +205,6 @@ Brush::makeNextMarkASlide(const std::string &textureName)
 {
   _slideTextureName = textureName;
 }
-
-
 
 void
 Brush::startNameInput(MarkRef nameMark)

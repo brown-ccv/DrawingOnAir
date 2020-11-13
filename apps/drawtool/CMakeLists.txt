@@ -20,7 +20,9 @@ add_executable(${PROJECT_NAME} ${HEADERFILES} ${SOURCEFILES})
 
 
 add_definitions(-DG3D_NO_FFMPEG)
-
+IF(WITH_PHOTON_SUPPORT)
+	add_definitions(-DWITH_PHOTON)
+ENDIF(WITH_PHOTON_SUPPORT)
 
 # Add dependency on libDrawingOnAir:
 target_include_directories(${PROJECT_NAME} PUBLIC ../../src)

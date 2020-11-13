@@ -45,7 +45,8 @@ macro(AutoBuild_use_package_VRG3DBase YOUR_TARGET INTERFACE_PUBLIC_OR_PRIVATE)
                 ${PACKAGE_NAME}
                 .
 				-DCMAKE_GENERATOR_PLATFORM=${CMAKE_GENERATOR_PLATFORM}
-				-DMinVR_DIR=${MinVR_DIR}
+				-DMinVR_DIR=${MinVR_DIR} 
+				-DWITH_PHOTON_SUPPORT=${WITH_PHOTON_SUPPORT}
             )
 			
             AutoBuild_find_built_package_module_mode(${PACKAGE_NAME})

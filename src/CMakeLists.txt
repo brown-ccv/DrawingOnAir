@@ -143,6 +143,22 @@ set(SHADERFILES
 set_source_files_properties(${EXTRAFILES} PROPERTIES HEADER_FILE_ONLY TRUE)
 set_source_files_properties(${SHADERFILES} PROPERTIES HEADER_FILE_ONLY TRUE)
 
+find_package(MinVR REQUIRED)
+if(TARGET MinVR::MinVR_Photon)
+	OPTION(WITH_PHOTON_SUPPORT "Builds DrawingOnAir with special support for Photon" OFF)
+endif()
+
+IF(WITH_PHOTON_SUPPORT)
+		set(SOURCEFILES 
+			${SOURCEFILES}
+			src/PhotonInterface.cpp
+			)
+		set(HEADERFILES 
+			${HEADERFILES}
+			src/PhotonInterface.h
+			)
+ENDIF(WITH_PHOTON_SUPPORT)
+
 source_group("Header Files" FILES ${HEADERFILES})
 source_group("Source Files" FILES ${SOURCEFILES})
 source_group("Shaders" FILES ${SHADERFILES})
@@ -161,8 +177,13 @@ target_include_directories(DrawingOnAir PUBLIC
     $<INSTALL_INTERFACE:${INSTALL_INCLUDE_DEST}>        # for client in install mode
 )
 
-find_package(MinVR REQUIRED)
 target_link_libraries(DrawingOnAir PUBLIC MinVR::MinVR MinVR::MinVR_G3D)
+
+IF(WITH_PHOTON_SUPPORT)
+		target_link_libraries(DrawingOnAir PUBLIC MinVR::MinVR_Photon)
+		add_definitions(-DWITH_PHOTON)
+ENDIF(WITH_PHOTON_SUPPORT)
+
 add_definitions(-DG3D_NO_FFMPEG)
 
 include(AutoBuildVRG3DBase)

@@ -77,6 +77,7 @@ public:
 
   void serialize(class G3D::BinaryOutput& b);
   void deserialize(class G3D::BinaryInput& b);
+  void deserializeMark(class G3D::BinaryInput& b);
 
 private:
 

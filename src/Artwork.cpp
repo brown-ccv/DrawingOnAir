@@ -369,7 +369,84 @@ Artwork::deserialize(G3D::BinaryInput &b)
     alwaysAssertM(false, "Unrecognized Artwork version " + MinVR::intToString(version));
   }
 }
-
+void
+Artwork::deserializeMark(G3D::BinaryInput &b)
+{
+  std::string desc = b.readString();
+  if (desc == "RibbonMark") {
+	  MarkRef newMark = new RibbonMark("Unnamed", _gfxMgr, _triStripModel);
+	  newMark->deserialize(b);
+	  addMark(newMark);
+	  newMark->commitGeometry(this);
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->layerIndex > _maxLayerID)) {
+		  _maxLayerID = newMark->getInitialBrushState()->layerIndex;
+	  }
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->frameIndex >= _numFrames)) {
+		  _numFrames = newMark->getInitialBrushState()->frameIndex + 1;
+	  }
+  }
+  else if (desc == "TubeMark") {
+	  MarkRef newMark = new TubeMark("Unnamed", _gfxMgr, _triStripModel);
+	  newMark->deserialize(b);
+	  addMark(newMark);
+	  newMark->commitGeometry(this);
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->layerIndex > _maxLayerID)) {
+		  _maxLayerID = newMark->getInitialBrushState()->layerIndex;
+	  }
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->frameIndex >= _numFrames)) {
+		  _numFrames = newMark->getInitialBrushState()->frameIndex + 1;
+	  }
+  }
+  else if (desc == "FlatTubeMark") {
+	  MarkRef newMark = new FlatTubeMark("Unnamed", _gfxMgr, _triStripModel);
+	  newMark->deserialize(b);
+	  addMark(newMark);
+	  newMark->commitGeometry(this);
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->layerIndex > _maxLayerID)) {
+		  _maxLayerID = newMark->getInitialBrushState()->layerIndex;
+	  }
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->frameIndex >= _numFrames)) {
+		  _numFrames = newMark->getInitialBrushState()->frameIndex + 1;
+	  }
+  }
+  else if (desc == "AnnotationMark") {
+	  MarkRef newMark = new AnnotationMark("Unnamed", _gfxMgr, _annotationModel);
+	  newMark->deserialize(b);
+	  addMark(newMark);
+	  newMark->commitGeometry(this);
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->layerIndex > _maxLayerID)) {
+		  _maxLayerID = newMark->getInitialBrushState()->layerIndex;
+	  }
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->frameIndex >= _numFrames)) {
+		  _numFrames = newMark->getInitialBrushState()->frameIndex + 1;
+	  }
+  }
+  else if (desc == "SlideMark") {
+	  MarkRef newMark = new SlideMark("Unnamed", _gfxMgr);
+	  newMark->deserialize(b);
+	  addMark(newMark);
+	  newMark->commitGeometry(this);
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->layerIndex > _maxLayerID)) {
+		  _maxLayerID = newMark->getInitialBrushState()->layerIndex;
+	  }
+	  if ((newMark->getInitialBrushState().notNull()) &&
+		  (newMark->getInitialBrushState()->frameIndex >= _numFrames)) {
+		  _numFrames = newMark->getInitialBrushState()->frameIndex + 1;
+	  }
+  }
+  else {
+	  alwaysAssertM(false, "Unrecognized Mark type " + desc);
+  }
+}
 
 
 } // end namespace

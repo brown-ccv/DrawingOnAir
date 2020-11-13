@@ -57,6 +57,9 @@
 #include "TapeDrawHCI.H"
 #include "TextInputWidget.H"
 #include "WorkingLimits.H"
+#ifdef WITH_PHOTON
+	#include "PhotonInterface.H"
+#endif
 
 namespace DrawOnAir {
 
@@ -230,7 +233,9 @@ private:
   TextInputWidgetRef         _textInputWidget;
   G3D::Vector3                    _handOffset;
   WorkingLimitsRef           _workingLimits;
-
+#ifdef WITH_PHOTON
+  PhotonInterfaceRef		_photonInterface;
+#endif
   bool                       _frictionOn;
   bool                       _pressureBtnPressed;
   std::string                _lastFilename;
